@@ -1,8 +1,6 @@
-console.log('Hello World!');
- 
-   var width=screen.width;
-   var height=-80+screen.height;
- // document.getElementById('contenar').style.marginTop=(height-width)/2+'px';
-   document.getElementById('contenar'). style.height=width+'px';
-   document.getElementById('contenar'). style.width=width+'px';
-  
+var height=screen.height;
+ var width=screen.width;
+var a=width/2;
+var b=height*70/100-100;
+ document.getElementById("contenar").style.transformOrigin =a + "px " + a + "px";
+document.getElementById('random-number-bord').style.width=b+'px';

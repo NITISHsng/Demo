@@ -1,21 +1,212 @@
 
-   *{
+   body{
      margin:0;
-     padding:0;
-     height:100vh;
-     width: 100vw
-    background: radial-gradient(circle, red 5%, pink 40%, #000056 60%);
-    background-repeat: no-repeat;
-    overflow:hidden;
+     padding:0px;
+     height: 100vh;
+     background: radial-gradient(circle, red 2%, pink 40%, #000056 80%);
+     background-size: cover;
+     background-repeat: no-repeat;
+     overflow:hidden;
+     background-attachment: fixed;
+  background-size: cover;
+  margin: 0; 
    }
-    #contenar{
-      background-color: red;
-      transform: rotate(90deg);
-    }
-   .other-player-box{
+ 
+  #contenar{
      height: 100vw;
-     width:100px;
+     width: 95vh;
      transform: rotate(90deg);
-     background-color: blue;
+     justify-content: center;
+     align-items: center ;
+     display:flex;
    }
+   .left-right-box{
+     height:100%;
+     width: 14vh;
+     padding: 2%;
+   }
+   .left-box{
+     background: linear-gradient(to right,red, transparent);
+   }
+   .right-box{
+     background: linear-gradient(to left,red, transparent);
+   }
+   .clear-input-box{
+     height:90%;
+     width:80%;
+     border:2px solid white;
+    background-color:rgb(20,20,20,.2);
+    box-shadow: 0px 0px 10px white;
+    padding:10px;
+    border-radius: 10px;
+    overflow: scroll;
+   }
+   .clear-input-box button{
+     height :32px;
+     width: 70px;
+     padding: 5px;
+     margin-top: 13px;
+     font-size: 15px;
+     font-weight: 800;
+     border:none;
+     border-radius: 10px;
+     background-color:rgba(20,20,20,.3);
+     color: rgb(255, 192, 203);
+       border:2px solid pink;
+    box-shadow: 0px 0px 10px pink;
+   }
+  .game-bord{
+    height:100vw;
+    width:64vh;
+    position: relative;
+    left:-0px;
+  }
+  .header {
+  height: 12%;
+  width: 99%;
+  display: flex;
+  border-bottom-right-radius: 10% 80%;
+  border-bottom-left-radius: 10% 80%;
+  border: 5px solid pink;
+  box-shadow: 0px 4px 6px 0px pink;
+  background-color: rgba(20, 25, 25,.1);
+/*  background-image: linear-gradient(#2F3589, lightblue);*/
+  font-size: 20px;
+  font-weight: 800;
+  text-shadow: 0px 0px 4px white;
+ 
+}
+   .header div{
+     display: flex;
+     justify-content: center;
+     align-items:center;
+     
+   }
+   #level-on-header{
+     margin-left:7px;
+     width: 5%;
+     color: green ;
+     font-size: 25px;
+     position:relative;
+     bottom: 10px;
+   }
+   #options{
+     font-weight: 1000;
+     width:5%;
+     font-size: 25px;
+     position:relative;
+     bottom: 10px;
+   }
+   .header-logo{
+    width:15%;
+   }
+   .header-logo img{
+     height :35px;
+     width: 35px;
+     border-radius:50%;
+     border:2px solid white ;
+   }
+   .points{
+     width :20%;
+     font-size: 25px;
+   }
+   #headergif img{
+     height:55px;
+     width:80px;
+     border-radius:0px;
+     border:0px;
+   }
+   .bord{
+     height:63%;
+     width:100%;
+     display:flex;
+      }
+   .other-player-box{
+     width:50px;
+   }
+   .other-player-box div{
+     height:55px;
+     width: 50px;
+     text-align: center;
+     text-color:gold;
+     font-size: 10px;
+     margin-top: 1px;
+   }
+   .other-player-box div div{
+     margin-top: -2px;
+     color: gold;
+     font-weight: 600;
+     height: 15px;
+     
+   }
+  #random-number-bord{
+   background-color: white;
+   opacity :.8;
+  }
+   .bord div{
+     
+   }
+   #investbutt{
+     height:20%;
+     width :98%;
+     border-top-right-radius:10% 80%;
+     border-top-left-radius:10% 80%;
+      border:5px solid pink;
+      border-bottom: none;
+      box-shadow:0px 0px 6px 4px pink;
+      background-image: linear-gradient( lightblue,#2F3589);
+      padding:3px;
+   }
+   #investbutt div{
+     width:90%;
+     margin:auto;
+     height: 30px;
+     display: flex;
+   }
+   #investbutt div div{
+     margin:auto;
+     margin-top:15px;
+     justify-content: center;
+     align-items: center;
+     text-shadow: 0px 0px 4px white;
+   }
+
+#investbutt div button{
+  height: 50px;
+  width: 40px;;
+ border: none;
+  margin:auto;    
+  font-size:20px;
+  font-weight: bold;
+  border-radius:10px;  
+  text-shadow: 1px 1px 1px white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+ }
+    .randomvalue {
+      height: 50%;
+      width: 100%;
+      display: flex;
+    }
+    .randomani{
+        width:30%;
+        height:100%;
+        max-width:100px;
+        max-height:100px;
+        margin:auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 3px 2px 5px rgb(20, 25, 25);
+        font-size:6vh;
+        overflow:hidden;
+        border-radius:20px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+   
+   .other-player-box img{
+    height: 40px;
+    width: 40px;
+    border:2px solid white ;
+    border-radius:50%;
     
+   }
