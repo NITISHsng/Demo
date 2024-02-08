@@ -65,8 +65,7 @@
           </div>
         </div>
         <div id="random-number-bord">
-            <div id="timer-box"> <div id="timerbox1"> <div id="timerbox2"> <div id="timer">3</div></div></div></div>       
-  
+            <div id="timer-box"> <div id="timerbox1"> <div id="timerbox2"> <div id="timer">3</div></div></div></div>    
               <div class="randomvalue" id="rdmnum1">
                 <div class="randomani" id="random1">0</div>
                 <div class="randomani" id="random2">0</div>
@@ -77,7 +76,23 @@
                 <div class="randomani" id="random5">0</div>
                 <div class="randomani" id="random6">0</div>
               </div>
+              <div id="win-loss-box">
+                <div id="win-loss">You win</div><div id="result-coin">
+                  <div id="win"></div>
+                  <div id="loss"></div>
+                </div>
+              </div>
+             <div id="notes">
+               <div id="level-update">
+                 <div id="level">
+                   Level-1
+                 </div>
+                 <div id="level-comment">congratulations
+                 </div>
+               </div>
+             </div>
         </div>
+       
          <div class="other-player-box player-box1">
               <div>
                   <img src="/plr3.png" alt="/img.jpeg">
@@ -124,11 +139,11 @@
   <div class="left-right-box right-box">
         <div class="clear-input-box">
          <button>ABOUT</button>
-        <button><img src="/full-screen.png" alt="//" height="90%"></button>
+        <button>settings</button>
         <div class="low-med-high">
-           <button>LOW</button>
-           <button>MEDIUM</button>
-           <button>HIGH</button>
+           <button id="low">LOW</button>
+           <button id="medium">MEDIUM</button>
+           <button id="high">HIGH</button>
         </div>
            <button id="ready">READY</button>
            <button id="clear">CLEAR</button>
@@ -136,4 +151,3 @@
   </div>
 <script src="main.js"></script>
 </body>
-</html>

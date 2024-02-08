@@ -4,26 +4,23 @@ var a=width/2;
 var b=height*70/100-100;
  document.getElementById("contenar").style.transformOrigin =a + "px " + a + "px";
 document.getElementById('random-number-bord').style.width=b+'px';
-//document.getElementById('timer-box').style.width=b+'px';
 
 // variable
-
 let computerpoints=localStorage.getItem("computerpoints");
  let playerpoints=localStorage.getItem("playerpoints");
  if(computerpoints==null){
- computerpoints=50000;
- playerpoints=10000;
+   computerpoints=50000;
+   playerpoints=10000;
  }
  
  var ready123=new Audio("/ready123.mp3");
  var timersound=new Audio("/timersound.mp3");
  var clear=new Audio("/clear.mp3");
  var cancel=new Audio("/cancel.mp3");
- var wellcome=new Audio("/welcome.mp3");
+ var chain=new Audio("/chain.mp3");
  var  insert=new Audio("/selection.mp3");
  var  select=new Audio("/select.mp3");
  var  selectionsound=new Audio("/insert.mp3");
-
  
  var level=1;
  function suggestvalue(){
@@ -39,24 +36,7 @@ let computerpoints=localStorage.getItem("computerpoints");
  }
  
  var selectionNo;
- /*
-
-// suggestion value insert
- var valueinsert=document.querySelectorAll("#all-suggestion button");
- valueinsert.forEach(function(button,index) {
-  alert(123); 
- button.addEventListener('click', function(){
-   let x=1;
-   button[i].style.display='none';
-   suggestvalue();
-   let p="inv" +selectionNo;
-   let q="output"+selectionNo;
-   document.getElementById(`${p}`).innerHTML=x*(index+1)*100;
-   document.getElementById(`${p}`).value=x*(index+1)*100;
- });
- });
- */
-// selection button 
+// select a button shadow change
 function selection(){
   if(ready==true){
     ready=false;
@@ -68,66 +48,63 @@ function selection(){
       buttons[i-1].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
   }else{
-  for (var i = 0; i < 6; i++) {
-     buttons[i].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
-   }
+    for (var i = 0; i < 6; i++){
+      buttons[i].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
+    }
+  }
 }
-}
-
+// select a button
 var totalcoinongame=1;
 var buttons=document.querySelectorAll("#selectionbutt button");
  buttons.forEach(function(button,index) {
- button.addEventListener('click', function(){
-   selectionsound.play();
-  navigator.vibrate(30);
-   selectionNo=index+1;
-   selection();
-   if (totalcoinongame==1) {
-     totalcoinongame=0;
-    document.getElementById("bord-gif").style.display="none";
-   } 
-     
- button.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px";
- });
- });
- 
- 
+  button.addEventListener('click', function(){
+    selectionsound.play();
+    navigator.vibrate(30);//selection vibration 
+    selectionNo=index+1;
+    selection();
+    if (totalcoinongame==1) {
+      totalcoinongame=0;
+      document.getElementById("bord-gif").style.display="none";
+    } 
+     button.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px";
+  });
+});
+
  // low medium and high button ..
- 
  var lowmedhigh=document.querySelectorAll(".low-med-high button");
  lowmedhigh.forEach(function(button,index) {
- button.addEventListener('click', function(){
-   for (var i = 0; i <3; i++) {
-   lowmedhigh[i].style.boxShadow="0px 0px 10px pink";
-   lowmedhigh[i].style.textShadow="0px 0px 0px pink";
-   }
+  button.addEventListener('click', function(){
+    for (var i = 0; i <3; i++) {
+      lowmedhigh[i].style.boxShadow="0px 0px 10px pink";
+      lowmedhigh[i].style.textShadow="0px 0px 0px pink";
+    }
    button.style.textShadow ="0px 2px 4px pink";
    button.style.boxShadow='0px 2px 2px 3px rgba(20,0,0,.6)';
+  });
  });
- });
- 
+// clear and cancel 
  document.getElementById("clear").onclick = function(){
-if(ready==true){
-  ready=false;
-  clear.play();
-  for(var i = 1; i <= 6; i++) {
-    let p="inv" +i;
-    let q="random"+i;
-    document.getElementById(`${p}`).innerHTML="000";
-    document.getElementById(`${p}`).value=0;
-    document.getElementById(`${q}`).innerHTML=0;
- }
- document.getElementById('total-coin').value=0;
- document.getElementById('bord-gif').style.display='none';
-}else{
-  cancel.play();
-   let p="inv"+selectionNo;
-   document.getElementById(`${p}`).innerHTML="000";
-   document.getElementById(`${p}`).value=0;
- }
+   navigator.vibrate(30);
+    if(ready==true){
+      ready=false;
+      clear.play();
+      for(var i = 1; i <= 6; i++) {
+       let p="inv" +i;
+       let q="random"+i;
+       document.getElementById(`${p}`).innerHTML="000";
+       document.getElementById(`${p}`).value=0;
+       document.getElementById(`${q}`).innerHTML=0;
+      }
+      document.getElementById('total-coin').value=0;
+      document.getElementById('bord-gif').style.display='none';
+    }else{
+      cancel.play();
+      let p="inv"+selectionNo;
+      document.getElementById(`${p}`).innerHTML="000";
+      document.getElementById(`${p}`).value=0;
+    }
  }
  //TimeR
- 
  function startTimer() {
    let count = 3;
    const interval = setInterval(function() {
@@ -152,12 +129,11 @@ if(ready==true){
      }
    }
 }
- 
-  
+ // random number create in random number box
  function randomnumber(){
    for(var i = 1; i <=6; i++) {
      let x = "random" + i;
-     let y= Math.floor(Math.random() * 6)+1;  
+     let y= Math.floor(Math.random() * 1)+1;  
      document.getElementById(`${x}`).innerHTML=y;
      document.getElementById(`${x}`).value=y;
    }
@@ -165,53 +141,64 @@ if(ready==true){
  }
  
 //level related features
-
  function levelup(x,y){
-   /*
+   document.getElementById('win-loss-box').style.display='none';
+   document.getElementById("notes").style.display='flex';
  if(x==0){
- document.getElementById("status").innerHTML=("Try again"); 
+ document.getElementById("level").innerHTML="level-"+y; 
+ document.getElementById("level-comment").innerHTML=("Try again");
  }else if(x==1){
  if(y!=5){
- document.getElementById("status").innerHTML=("Congratulations! You've reached a level "+y);
+   document.getElementById("level").innerHTML=("level-"+y); 
+ document.getElementById("level-comment").innerHTML=("Congratulations! <br> You've reached a level "+y);
  }else{
- document.getElementById("status").innerHTML=("Congratulations! You finish this game");  
+ document.getElementById("level-comment").innerHTML=("Congratulations! <br> You finish this game");  
  }
  }else if(x==2){
- document.getElementById("status").innerHTML=("Dear "+playername+" You've Leveled "+y);  
+  document.getElementById("level-comment").innerHTML=("wellcome <br>best of luck for next level");  
  }
- 
- localStorage.setItem("levelselector",y);
- 
- document.getElementById("lvl").innerHTML="Level-"+y;
- */
- document.getElementById("level-on-header").innerHTML="L"+y; 
-  
- //level       
+ setTimeout(function () {
+   document.getElementById("notes").style.display='none';
+ },4000)
+
+ //level check and give coin/points
  switch(y){
  case(1):
    level=1;
    playerpoints=10000;
  computerpoints=50000;
+ document.getElementById('level-on-header').innerHTML='L1';
  break;
  case(2):
    level=2;
    playerpoints =100000;
  computerpoints=500000;
+ document.getElementById('level-on-header').innerHTML='L2';
  break;
  case(3):
    level=3;
    playerpoints =1000000;
  computerpoints=5000000;  
+ document.getElementById('level-on-header').innerHTML='L3';
  break;
  case(4):
    level=4;
    playerpoints = 10000000;
-   computerpoints = 1000000000;
+   computerpoints = 100000000
+   ;
+   document.getElementById('level-on-header').innerHTML='L4';
  break;
  case(5):
-  alert("congratulations 👏🎉");
+   document.getElementById('level-on-header').innerHTML='L5';
+  const finish=confirm("congratulations \n continue with level-1");
+  if(finish==true){
+   levelup(1,1);
+  } else {
+    levelup(1,4);
+  }
  break;
  }
+ 
  if (level == 1) {
     x = 1;
   } else if (level == 2) {
@@ -221,6 +208,7 @@ if(ready==true){
   } else if (level == 4) {
     x = 1000;
   }
+
  let innvalue=document.querySelector("#all-suggestion"); 
  innvalue.innerHTML='';
  for(let i=1;i<=100;i++){
@@ -229,25 +217,23 @@ if(ready==true){
  innvalue.appendChild(createbutton);
  }
  // value insert on game 
+   setTimeout(function () {
  var valueinsert=document.querySelectorAll("#all-suggestion button");
  valueinsert.forEach(function(button,index) {
  button.addEventListener('click', function(){
    insert.play();
+   navigator.vibrate(30);
    let p="inv" +selectionNo;
    document.getElementById(`${p}`).innerHTML=x*(index+1)*100;
    document.getElementById(`${p}`).value=x*(index+1)*100;
  });
  });
  
-
-
- document.getElementById("computerpoints").innerHTML=computerpoints;
+document.getElementById("computerpoints").innerHTML=computerpoints;
  document.getElementById("playerpoints").innerHTML=playerpoints;
+ },2000)
  }
- 
- 
  var rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm5=0,rdm6=0;
- 
 //level of function 
 function ifrandomvalue1(){
  if(rdm1==1 ){
@@ -269,7 +255,6 @@ function ifrandomvalue1(){
  rdm6=0;
  }
  }
- 
  function ifrandomvaluemorethen1(){
  if(rdm1!==1 && rdm1!=0){
  rdm1++;
@@ -290,20 +275,21 @@ function ifrandomvalue1(){
  rdm6++;
  }       
  }
+ //win/loss box..
+ function winloss() {
+   document.getElementById('win-loss-box').style. display='flex';
+      setTimeout(function() {
+    document.getElementById('win-loss-box').style. display='none';
+    document.getElementById("playerpoints").innerHTML=playerpoints;
+ document.getElementById("computerpoints").innerHTML=computerpoints;
+   },3000)
+ }
  //ready button
-var totalcoin=1;
+var totalcoin=0;
 var ready;
-
-
-function sound() {
-  setTimeout(function() {
-    alert(3);
- let tryagain=new Audio("/Tryagain.mp3");
- tryagain.play();  
-  },100)
-}
-
+var readybuttoncontrol=1;
  document.getElementById("ready").onclick = function(){
+   if(readybuttoncontrol==1){
    ready123.play();
     totalcoin=0;
    for (var i = 1; i <=6; i++) {
@@ -317,19 +303,22 @@ function sound() {
  alert("select a number or card");
  }else{
    if(playerpoints >=totalcoin){
+     readybuttoncontrol=0;
+     navigator.vibrate(40);
+      // ready button clik animetion
+  document.getElementById('ready').style.boxShadow = "0px 0px 3px 3px pink";
      selection();
     timersound.play();
      rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm55=0,rdm6=0;
      
      playerpoints=playerpoints-totalcoin;
      document.getElementById("playerpoints").innerHTML=playerpoints;
-     
-     
      document.getElementById('timer-box').style.visibility='visible';
     startTimer();
     document.getElementById('bord-gif').style.display="flex";
     totalcoinongame=1;
     setTimeout(function(){
+      chain.play();
       document.getElementById('timer-box').style.visibility='hidden'; 
         createnewele();
         var elements = document.getElementsByClassName("ani");
@@ -338,19 +327,23 @@ function sound() {
          }
     }, 3000); 
     setTimeout(function(){
+      readybuttoncontrol=1;
+  // ready button  animation off 
+      document.getElementById('ready').style.boxShadow = "0px 0px 10px pink";
       randomnumber();
       ready=true;
      let win=0;
+     
+     // count random value 
  for (var i = 1; i <=6; i++) {
  let p="random" +i;
  let q=document.getElementById(`${p}`).value;
  let x="inv" +i;
      let y=document.getElementById(`${x}`).value;
- 
       if (y==null) {
     document.getElementById(`${x}`).value=0;
- 
       }
+      //count rdm value
  switch(q){
  case(1):
  rdm1++;  
@@ -372,14 +365,14 @@ function sound() {
  break;
  }
  }
-
+ 
  let random1=document.getElementById("inv1").value;
  let random2=document.getElementById("inv2").value;
  let random3=document.getElementById("inv3").value;
  let random4=document.getElementById("inv4").value;
  let random5=document.getElementById("inv5").value;
  let random6=document.getElementById("inv6").value;
-
+//increase rdm value by 1 or decrease 
  if (level==1){
  ifrandomvaluemorethen1();
  }else if(level==2){
@@ -388,15 +381,30 @@ function sound() {
 }else if(level==3){
   ifrandomvalue1();
 }
-
 win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(rdm6*random6);
-
  computerpoints=computerpoints-win+totalcoin;
  playerpoints=playerpoints+win;
  
  
  
- 
+ // overall win or loss ...
+ if(win>totalcoin){   
+   winloss();
+   document.getElementById('win').innerHTML=(win- totalcoin)+'+'+totalcoin;
+   document.getElementById('loss').innerHTML='';
+   document.getElementById('win-loss').innerHTML="You win";
+    }else if(win==totalcoin){  
+       winloss();
+  document.getElementById('win').innerHTML=totalcoin;
+   document.getElementById('loss').innerHTML='';
+document.getElementById('win-loss').innerHTML="Drown";
+ }else if(win<totalcoin){   
+   winloss();
+   document.getElementById('win').innerHTML='';
+   document.getElementById('loss').innerHTML=totalcoin;
+document.getElementById('win-loss').innerHTML="You loss";
+ }
+ // level up
  if (computerpoints<=0) {
  if(level==1){ levelup(1,2);
  }else if(level==2){ levelup(1,3);
@@ -404,7 +412,7 @@ win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(
  }else if(level==4){ levelup(1,5);
  }
  } 
-
+// if level.down
  if (playerpoints <= 0) {
    if (level == 4) {
      levelup(0, 3);
@@ -417,33 +425,37 @@ win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(
      levelup(0, 1);
    }
  }
- document.getElementById("playerpoints").innerHTML=playerpoints;
- document.getElementById("computerpoints").innerHTML=computerpoints;
- if(win>totalcoin){    
- 
-   //  navigator.vibrate(100);
- }else if(win==totalcoin){  
-  
- }else if(win<totalcoin){   
- }
  selectionNo=12;// out of selection button 
  for (var i = 1; i<=6; i++){
-     let x="random" +i;
       let p="inv" +i;
-      let z="rdm" +i;
-     let y=document.getElementById(`${x}`).value;
-      let q=document.getElementById(`${p}`).value;
-      if (q==null) {
-        q=0;
        document.getElementById(`${p}`).value=0;
-      }
- }
-
-    },6000);
-
-  }else{ alert("check Your points");  }
- } 
-
  }
  
-levelup(1,1);
+    },6000);
+  }else{ alert("check Your coin");  }
+ } 
+ } else {
+   alert("wait...")
+ }
+ }
+
+
+function shorting(x) {
+  let suggestion = document.getElementById('all-suggestion');
+  suggestion.scrollTo({
+    top: x,
+    behavior: 'smooth'
+  });
+}
+
+document.getElementById('low').onclick = function() {
+  shorting(0);
+}
+document.getElementById('medium').onclick = function() {
+  shorting(1320);
+}
+document.getElementById('high').onclick = function() {
+  shorting(2670);
+}
+
+levelup(2,1);
