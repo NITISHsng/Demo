@@ -133,7 +133,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  function randomnumber(){
    for(var i = 1; i <=6; i++) {
      let x = "random" + i;
-     let y= Math.floor(Math.random() * 1)+1;  
+     let y= Math.floor(Math.random() * 6)+1;  
      document.getElementById(`${x}`).innerHTML=y;
      document.getElementById(`${x}`).value=y;
    }
@@ -155,7 +155,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  document.getElementById("level-comment").innerHTML=("Congratulations! <br> You finish this game");  
  }
  }else if(x==2){
-  document.getElementById("level-comment").innerHTML=("wellcome <br>best of luck for next level");  
+  document.getElementById("level-comment").innerHTML=("welcome <br>best of luck for next level");  
  }
  setTimeout(function () {
    document.getElementById("notes").style.display='none';
