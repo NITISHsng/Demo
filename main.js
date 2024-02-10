@@ -13,15 +13,14 @@ let computerpoints=localStorage.getItem("computerpoints");
    playerpoints=10000;
  }
  
- var ready123=new Audio("/ready123.mp3");
- var timersound=new Audio("/timersound.mp3");
- var clear=new Audio("/clear.mp3");
- var cancel=new Audio("/cancel.mp3");
- var chain=new Audio("/chain.mp3");
- var  insert=new Audio("/selection.mp3");
- var  select=new Audio("/select.mp3");
- var  selectionsound=new Audio("/insert.mp3");
- 
+ var ready123=new Audio("/sound/ready123.mp3");
+ var timersound=new Audio("/sound/timersound.mp3");
+ var clear=new Audio("/sound/clear.mp3");
+ var cancel=new Audio("/sound/cancel.mp3");
+ var chain=new Audio("/sound/chain.mp3");
+ var  insert=new Audio("/sound/selection.mp3");
+ var  select=new Audio("/sound/select.mp3");
+ var  selectionsound=new Audio("/sound/insert.mp3");
  var level=1;
  function suggestvalue(){
    if(level==1){
@@ -34,7 +33,6 @@ let computerpoints=localStorage.getItem("computerpoints");
      x=1000;
    }
  }
- 
  var selectionNo;
 // select a button shadow change
 function selection(){
@@ -69,7 +67,6 @@ var buttons=document.querySelectorAll("#selectionbutt button");
      button.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px";
   });
 });
-
  // low medium and high button ..
  var lowmedhigh=document.querySelectorAll(".low-med-high button");
  lowmedhigh.forEach(function(button,index) {
@@ -116,7 +113,6 @@ var buttons=document.querySelectorAll("#selectionbutt button");
      }
    }, 700);
  }
- 
  //create newale
  function createnewele(){
    for(var i = 1; i <=6; i++) {
@@ -139,24 +135,22 @@ var buttons=document.querySelectorAll("#selectionbutt button");
    }
 
  }
- 
 //level related features
  function levelup(x,y){
+   document.getElementById("level").innerHTML=("level-"+y); 
    document.getElementById('win-loss-box').style.display='none';
    document.getElementById("notes").style.display='flex';
  if(x==0){
- document.getElementById("level").innerHTML="level-"+y; 
  document.getElementById("level-comment").innerHTML=("Try again");
  }else if(x==1){
  if(y!=5){
-   document.getElementById("level").innerHTML=("level-"+y); 
  document.getElementById("level-comment").innerHTML=("Congratulations! <br> You've reached a level "+y);
  }else{
  document.getElementById("level-comment").innerHTML=("Congratulations! <br> You finish this game");  
  }
  }else if(x==2){
   document.getElementById("level-comment").innerHTML=("welcome <br>best of luck for next level");  
- }
+  }
  setTimeout(function () {
    document.getElementById("notes").style.display='none';
  },4000)
@@ -184,8 +178,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  case(4):
    level=4;
    playerpoints = 10000000;
-   computerpoints = 100000000
-   ;
+   computerpoints = 1000000000;
    document.getElementById('level-on-header').innerHTML='L4';
  break;
  case(5):
@@ -228,7 +221,6 @@ var buttons=document.querySelectorAll("#selectionbutt button");
    document.getElementById(`${p}`).value=x*(index+1)*100;
  });
  });
- 
 document.getElementById("computerpoints").innerHTML=computerpoints;
  document.getElementById("playerpoints").innerHTML=playerpoints;
  },2000)
@@ -256,7 +248,7 @@ function ifrandomvalue1(){
  }
  }
  function ifrandomvaluemorethen1(){
- if(rdm1!==1 && rdm1!=0){
+ if(rdm1!==1 && rdm1 !=0){
  rdm1++;
  }
  if(rdm2!=1 && rdm2 !=0){
@@ -333,7 +325,6 @@ var readybuttoncontrol=1;
       randomnumber();
       ready=true;
      let win=0;
-     
      // count random value 
  for (var i = 1; i <=6; i++) {
  let p="random" +i;
@@ -365,7 +356,6 @@ var readybuttoncontrol=1;
  break;
  }
  }
- 
  let random1=document.getElementById("inv1").value;
  let random2=document.getElementById("inv2").value;
  let random3=document.getElementById("inv3").value;
@@ -384,9 +374,6 @@ var readybuttoncontrol=1;
 win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(rdm6*random6);
  computerpoints=computerpoints-win+totalcoin;
  playerpoints=playerpoints+win;
- 
- 
- 
  // overall win or loss ...
  if(win>totalcoin){   
    winloss();
@@ -430,7 +417,6 @@ document.getElementById('win-loss').innerHTML="You loss";
       let p="inv" +i;
        document.getElementById(`${p}`).value=0;
  }
- 
     },6000);
   }else{ alert("check Your coin");  }
  } 
@@ -438,8 +424,6 @@ document.getElementById('win-loss').innerHTML="You loss";
    alert("wait...")
  }
  }
-
-
 function shorting(x) {
   let suggestion = document.getElementById('all-suggestion');
   suggestion.scrollTo({
@@ -447,7 +431,6 @@ function shorting(x) {
     behavior: 'smooth'
   });
 }
-
 document.getElementById('low').onclick = function() {
   shorting(0);
 }
@@ -457,5 +440,5 @@ document.getElementById('medium').onclick = function() {
 document.getElementById('high').onclick = function() {
   shorting(2670);
 }
-
-levelup(2,1);
+//firstly call this function 
+levelup(2,3);
