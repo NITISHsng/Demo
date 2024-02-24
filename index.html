@@ -6,9 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>game</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/image/mypic.jpg" type="image/jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
-  <div id="contenar">
+  <div id="login-page">
+     <div id="login-box">
+       <div class="login-content">
+         <div class="login" id="login">SIGN-UP</div>
+        <form id="registrationForm">
+           <input style="font-family: 'Font Awesome  free'; font-weight: 800;" type="text" id="mail" placeholder="&#xF007; username" />
+             <input style="font-family: 'Font Awesome  free'; font-weight: 800;" type="text" id="pass" placeholder="&#xF023; password" />
+           <button type="submit" onclick="handler()">SUBMIT</button>
+         </form>
+        
+       </div>
+     </div>
+  </div>
+  <div id="contanar">
     <div class="left-right-box left-box">
       <div class="clear-input-box" id="all-suggestion">
         <!-all suggest value-->
@@ -22,12 +38,12 @@
          <img id="computer-logo" src="/image/img.jpeg">
         </div>
             <div class="points" id="computerpoints">
-             50000
+             5
             </div>
            <div id="headergif">
             <img src="/gif/header.gif" alt="header.gif">
            </div>
-            <div class="points" id="playerpoints">10000
+            <div class="points" id="playerpoints">10
             </div>
               <div class="header-logo">
                 <img id="player-logo" src="/image/mypic.jpg">
@@ -126,7 +142,7 @@
   <div class="left-right-box right-box">
         <div class="clear-input-box">
          <button>ABOUT</button>
-        <button>settings</button>
+        <button><i class="fa-solid fa-gear"></i></button>
         <div class="low-med-high">
            <button id="low">LOW</button>
            <button id="medium">MEDIUM</button>
@@ -137,4 +153,69 @@
       </div>
   </div>
 <script src="main.js"></script>
+<script type="module">
+    var signuplogin=true;
+    document.getElementById('login').onclick=function(){
+        if(signuplogin==false){
+            signuplogin=true;
+            document.getElementById('login').innerHTML='SIGN-UP';
+        }else{
+            signuplogin=false;
+            document.getElementById('login').innerHTML='LOG-IN';
+        }
+    }
+
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+    import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCS-YwpJQCxl2bmFOj0rtduuZ5Kafn5Jh4",
+        authDomain: "mygame-911df.firebaseapp.com",
+        projectId: "mygame-911df",
+        storageBucket: "mygame-911df.appspot.com",
+        messagingSenderId: "13627778403",
+        appId: "1:13627778403:web:3a5450a6b88b867ee29f56"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const mail = document.getElementById("mail").value;
+        const pass = document.getElementById("pass").value;
+
+        try {
+            if (signuplogin) {
+                // Call the signup function here
+                // signup(mail, pass);
+                // Example:
+                // await signUpWithEmailAndPassword(auth, mail, pass);
+            } else {
+                const userCredential = await signInWithEmailAndPassword(auth, mail, pass);
+                const user = userCredential.user;
+                document.getElementById("login-page").style.display='none';
+                document.getElementById("contanar").style.display='flex';
+                signuplogin=false;
+            }
+        } catch (error) {
+            const errorMessage = error.message;
+            alert(`Authentication failed: ${errorMessage}`);
+        }
+    });
+
+    // Function to handle signup
+    async function signUpWithEmailAndPassword(auth, email, password) {
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            // Additional logic after successful signup
+        } catch (error) {
+            throw error;
+        }
+    }
+</script>
+
 </body>

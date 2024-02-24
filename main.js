@@ -1,18 +1,15 @@
+
 var height=screen.height;
  var width=screen.width;
 var a=width/2;
 var b=height*70/100-100;
- document.getElementById("contenar").style.transformOrigin =a + "px " + a + "px";
+ document.getElementById("contanar").style.transformOrigin =a + "px " + a + "px";
 document.getElementById('random-number-bord').style.width=b+'px';
 
 // variable
-let computerpoints=localStorage.getItem("computerpoints");
- let playerpoints=localStorage.getItem("playerpoints");
- if(computerpoints==null){
-   computerpoints=50000;
-   playerpoints=10000;
- }
- 
+// let computerpoints=localStorage.getItem("computerpoints");
+// let playerpoints=localStorage.getItem("playerpoints");
+
  var ready123=new Audio("/sound/ready123.mp3");
  var timersound=new Audio("/sound/timersound.mp3");
  var clear=new Audio("/sound/clear.mp3");
@@ -21,7 +18,15 @@ let computerpoints=localStorage.getItem("computerpoints");
  var  insert=new Audio("/sound/selection.mp3");
  var  select=new Audio("/sound/select.mp3");
  var  selectionsound=new Audio("/sound/insert.mp3");
- var level=1;
+ 
+ var level=localStorage.getItem('level');
+ 
+ if (level==null) {
+   //firstly call this function 
+ levelup(2,1);
+ }
+
+
  function suggestvalue(){
    if(level==1){
      X=1;
@@ -133,10 +138,11 @@ var buttons=document.querySelectorAll("#selectionbutt button");
      document.getElementById(`${x}`).innerHTML=y;
      document.getElementById(`${x}`).value=y;
    }
-
  }
 //level related features
  function levelup(x,y){
+   localStorage.setItem("level",y);
+  // localStorage.clear();
    document.getElementById("level").innerHTML=("level-"+y); 
    document.getElementById('win-loss-box').style.display='none';
    document.getElementById("notes").style.display='flex';
@@ -154,34 +160,33 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  setTimeout(function () {
    document.getElementById("notes").style.display='none';
  },4000)
-
  //level check and give coin/points
  switch(y){
- case(1):
+ case('1'):
    level=1;
    playerpoints=10000;
  computerpoints=50000;
  document.getElementById('level-on-header').innerHTML='L1';
  break;
- case(2):
+ case('2'):
    level=2;
    playerpoints =100000;
  computerpoints=500000;
  document.getElementById('level-on-header').innerHTML='L2';
  break;
- case(3):
+ case('3'):
    level=3;
    playerpoints =1000000;
  computerpoints=5000000;  
  document.getElementById('level-on-header').innerHTML='L3';
  break;
- case(4):
+ case('4'):
    level=4;
    playerpoints = 10000000;
    computerpoints = 1000000000;
    document.getElementById('level-on-header').innerHTML='L4';
  break;
- case(5):
+ case('5'):
    document.getElementById('level-on-header').innerHTML='L5';
   const finish=confirm("congratulations \n continue with level-1");
   if(finish==true){
@@ -191,7 +196,9 @@ var buttons=document.querySelectorAll("#selectionbutt button");
   }
  break;
  }
- 
+
+// localStorage.setItem("level", level);
+
  if (level == 1) {
     x = 1;
   } else if (level == 2) {
@@ -275,6 +282,7 @@ function ifrandomvalue1(){
     document.getElementById("playerpoints").innerHTML=playerpoints;
  document.getElementById("computerpoints").innerHTML=computerpoints;
    },3000)
+   
  }
  //ready button
 var totalcoin=0;
@@ -389,24 +397,21 @@ document.getElementById('win-loss').innerHTML="Drown";
    winloss();
    document.getElementById('win').innerHTML='';
    document.getElementById('loss').innerHTML=totalcoin;
-document.getElementById('win-loss').innerHTML="You loss";
+document.getElementById('win-loss').innerHTML="Your loss";
  }
  // level up
  if (computerpoints<=0) {
- if(level==1){ levelup(1,2);
- }else if(level==2){ levelup(1,3);
- }else if(level==3){ levelup(1,4);
- }else if(level==4){ levelup(1,5);
+ if(level==1){ levelup(1,'2');
+ }else if(level==2){ levelup(1,'3');
+ }else if(level==3){ levelup(1,'4');
+ }else if(level==4){ levelup(1,'5');
  }
  } 
 // if level.down
  if (playerpoints <= 0) {
-   if (level == 4) {
-     levelup(0, 3);
-   } else if (level == 3) {
-     levelup(0, 2);
-   } else if (level == 2) {
-     levelup(0, 1);
+   if (level == 4) { levelup(0, '3');
+   } else if (level == 3) { levelup(0, '2');
+   } else if (level == 2) { levelup(0, '1');
    } else if (level == 1) {
      alert("Sorry you are a loser");
      levelup(0, 1);
@@ -430,7 +435,8 @@ function shorting(x) {
     top: x,
     behavior: 'smooth'
   });
-}
+}levelup(2,level);
+
 document.getElementById('low').onclick = function() {
   shorting(0);
 }
@@ -440,5 +446,3 @@ document.getElementById('medium').onclick = function() {
 document.getElementById('high').onclick = function() {
   shorting(2670);
 }
-//firstly call this function 
-levelup(2,3);
