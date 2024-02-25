@@ -6,10 +6,6 @@ var b=height*70/100-100;
  document.getElementById("contanar").style.transformOrigin =a + "px " + a + "px";
 document.getElementById('random-number-bord').style.width=b+'px';
 
-// variable
-// let computerpoints=localStorage.getItem("computerpoints");
-// let playerpoints=localStorage.getItem("playerpoints");
-
  var ready123=new Audio("/sound/ready123.mp3");
  var timersound=new Audio("/sound/timersound.mp3");
  var clear=new Audio("/sound/clear.mp3");
@@ -229,6 +225,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  });
  });
 document.getElementById("computerpoints").innerHTML=computerpoints;
+alert(computerpoints);
  document.getElementById("playerpoints").innerHTML=playerpoints;
  },2000)
  }
