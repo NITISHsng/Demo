@@ -153,7 +153,7 @@
       </div>
   </div>
 <script src="main.js"></script>
-<script type="module">
+<<script type="module">
     var signuplogin=true;
     document.getElementById('login').onclick=function(){
         if(signuplogin==false){
@@ -166,7 +166,7 @@
     }
 
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-    import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 
     const firebaseConfig = {
         apiKey: "AIzaSyCS-YwpJQCxl2bmFOj0rtduuZ5Kafn5Jh4",
@@ -189,10 +189,8 @@
 
         try {
             if (signuplogin) {
-                // Call the signup function here
-                // signup(mail, pass);
-                // Example:
-                // await signUpWithEmailAndPassword(auth, mail, pass);
+                await createUserWithEmailAndPassword(auth, mail, pass);
+                alert("User created successfully. You can now login.");
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, mail, pass);
                 const user = userCredential.user;
@@ -211,11 +209,13 @@
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            // Additional logic after successful signup
+            alert("User created successfully. You can now login.");
         } catch (error) {
-            throw error;
+            const errorMessage = error.message;
+            alert(`Sign up failed: ${errorMessage}`);
         }
     }
 </script>
+
 
 </body>
