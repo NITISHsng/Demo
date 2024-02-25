@@ -14,7 +14,7 @@ document.getElementById('random-number-bord').style.width=b+'px';
  var  insert=new Audio("/sound/selection.mp3");
  var  select=new Audio("/sound/select.mp3");
  var  selectionsound=new Audio("/sound/insert.mp3");
- 
+// localStorage.clear();
  var level=localStorage.getItem('level');
  
  if (level==null) {
@@ -188,9 +188,9 @@ var buttons=document.querySelectorAll("#selectionbutt button");
    document.getElementById('level-on-header').innerHTML='L5';
   const finish=confirm("congratulations \n continue with level-1");
   if(finish==true){
-   levelup(1,1);
+   levelup(1,'1');
   } else {
-    levelup(1,4);
+    levelup(1,'4');
   }
  break;
  }
@@ -226,8 +226,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
    document.getElementById(`${p}`).value=x*(index+1)*100;
  });
  });
-document.getElementById("computerpoints").innerHTML=computerpoints;
-alert(computerpoints);
+ document.getElementById("computerpoints").innerHTML=computerpoints;
  document.getElementById("playerpoints").innerHTML=playerpoints;
  },2000)
  }
@@ -434,7 +433,7 @@ function shorting(x) {
     top: x,
     behavior: 'smooth'
   });
-}levelup(2,level);
+}
 
 document.getElementById('low').onclick = function() {
   shorting(0);
