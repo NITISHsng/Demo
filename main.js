@@ -23,7 +23,7 @@ document.getElementById('random-number-bord').style.width=b+'px';
  
  if (level==null) {
    //firstly call this function 
- levelup(2,1);
+ levelup(2,'1');
  }
 
 
