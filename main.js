@@ -227,6 +227,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  });
  });
 document.getElementById("computerpoints").innerHTML=computerpoints;
+alert(computerpoints);
  document.getElementById("playerpoints").innerHTML=playerpoints;
  },2000)
  }
