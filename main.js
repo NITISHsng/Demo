@@ -20,6 +20,8 @@ document.getElementById('random-number-bord').style.width=b+'px';
  if (level==null) {
    //firstly call this function 
  levelup(2,'1');
+ } else {
+   levelup(2,level);
  }
 
 
@@ -225,7 +227,6 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  });
  });
 document.getElementById("computerpoints").innerHTML=computerpoints;
-alert(computerpoints);
  document.getElementById("playerpoints").innerHTML=playerpoints;
  },2000)
  }
