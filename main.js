@@ -22,6 +22,7 @@ var playerpoints=0;
    //firstly call this function 
  levelup(2,'1');
  } else {
+   alert(level)
    levelup(2,level);
  }
 
@@ -141,7 +142,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
 //level related features
  function levelup(x,y){
    localStorage.setItem("level",y);
-  // localStorage.clear();
+   localStorage.clear();
    document.getElementById("level").innerHTML=("level-"+y); 
    document.getElementById('win-loss-box').style.display='none';
    document.getElementById("notes").style.display='flex';
@@ -445,3 +446,4 @@ document.getElementById('medium').onclick = function() {
 document.getElementById('high').onclick = function() {
   shorting(2670);
 }
+localStorage.clear();
