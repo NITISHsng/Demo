@@ -228,7 +228,7 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  });
  });
  document.getElementById("computerpoints").innerHTML=computerpoints;
- document.getElementById("playerpoints").innerHTML=playerpoints;
+ document.getElementById("playerpoints").innerHTML=000;
  },2000)
  }
  var rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm5=0,rdm6=0;
