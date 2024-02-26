@@ -5,8 +5,8 @@ var a=width/2;
 var b=height*70/100-100;
  document.getElementById("contanar").style.transformOrigin =a + "px " + a + "px";
 document.getElementById('random-number-bord').style.width=b+'px';
-var computerpoints;
-var playerpoints;
+var computerpoints=0;
+var playerpoints=0;
  var ready123=new Audio("/sound/ready123.mp3");
  var timersound=new Audio("/sound/timersound.mp3");
  var clear=new Audio("/sound/clear.mp3");
@@ -22,7 +22,7 @@ var playerpoints;
    //firstly call this function 
  levelup(2,'1');
  } else {
-   levelup(2,2);
+   levelup(2,level);
  }
 
 
