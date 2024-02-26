@@ -154,8 +154,8 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
-
- var signuplogin=true;
+var  welcome=new Audio("/sound/welcome.mp3");
+var signuplogin=true;
     document.getElementById('login').onclick=function(){
         if(signuplogin==false){
             signuplogin=true;
@@ -184,6 +184,7 @@
     const form = document.getElementById("registrationForm");
 
     form.addEventListener("submit", async (e) => {
+      
         e.preventDefault();
         const mail = document.getElementById("mail").value;
         const pass = document.getElementById("pass").value;
@@ -198,6 +199,7 @@
                 document.getElementById("login-page").style.display='none';
                 document.getElementById("contanar").style.display='flex';
                 signuplogin=false;
+                welcome.play();
             }
         } catch (error) {
             const errorMessage = error.message;
@@ -211,6 +213,7 @@
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             alert("User created successfully. You can now login.");
+          
         } catch (error) {
             const errorMessage = error.message;
             alert(`Sign up failed: ${errorMessage}`);
