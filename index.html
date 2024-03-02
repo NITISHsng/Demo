@@ -108,7 +108,10 @@
                 <img src="/image/plrabout.png" alt="bkb">
                </div>
                <div id="setting">
-                 <button id="cord-or-number"> <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button>
+                 <button id="card-or-number"> <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button><br>
+                 <button id="restart">RESET</button>
+                 <br>
+                 <button id="bg-music">Background music</button>
                </div>
         </div>
          <div class="other-player-box player-box1">
@@ -192,9 +195,8 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
+
 //localStorage.clear();
-document.getElementById("login-page").style.display='none';
-                document.getElementById("contanar").style.display='flex';
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
     document.getElementById('login').onclick=function(){
@@ -241,6 +243,7 @@ var signuplogin=true;
                 document.getElementById("contanar").style.display='flex';
                 signuplogin=false;
                 welcome.play();
+                bgmusic.play();
             }
         } catch (error) {
             const errorMessage = error.message;

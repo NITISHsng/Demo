@@ -15,6 +15,8 @@ var playerpoints=0;
  var  insert=new Audio("/sound/selection.mp3");
  var  select=new Audio("/sound/select.mp3");
  var  selectionsound=new Audio("/sound/insert.mp3");
+ var  bgmusic=new Audio("/sound/backgroundmusic.mp3");
+ 
 // localStorage.clear();
  var level=localStorage.getItem('level');
  
@@ -514,7 +516,7 @@ document.getElementById('settings').onclick=function () {
 
 //card or number
 var CardNumber=true;
-document.getElementById('setting').onclick=function () {
+document.getElementById('card-or-number').onclick=function () {
  var CardStyle=document.getElementById('card-style');
  var NumberStyle=document.getElementById('number-style');
   if (CardNumber==true) {
@@ -539,5 +541,24 @@ document.getElementById('setting').onclick=function () {
        document.getElementById('img').style.display = "flex";
        document.getElementById('num').style.display = "none";
        cardornumber=1;
+  }
+}
+document.getElementById('restart').onclick=function () {
+  let conf=confirm("confirm reset");
+ if(conf==true){
+  levelup(1,"1");
+}
+}
+
+var bgmsc=1;
+document.getElementById('bg-music').onclick=function () {
+  if (bgmsc==1) {
+    bgmsc=0;
+    bgmusic.pause();
+    document.getElementById('bg-music').style.color='black';
+  } else {
+    bgmsc=1;
+    bgmusic.play();
+    document.getElementById('bg-music').style.color='rgba(120,0,0,1)';
   }
 }
