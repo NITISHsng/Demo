@@ -22,7 +22,6 @@ var playerpoints=0;
    //firstly call this function 
  levelup(2,'1');
  } else {
-   alert(level)
    levelup(2,level);
  }
 
@@ -40,6 +39,7 @@ var playerpoints=0;
  }
  var selectionNo;
 // select a button shadow change
+var buttons=document.querySelectorAll("#selectionbutt div button");
 function selection(){
   if(ready==true){
     ready=false;
@@ -51,14 +51,13 @@ function selection(){
       buttons[i-1].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
   }else{
-    for (var i = 0; i < 6; i++){
+    for (var i = 0; i < 12; i++){
       buttons[i].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
   }
 }
 // select a button
 var totalcoinongame=1;
-var buttons=document.querySelectorAll("#selectionbutt button");
  buttons.forEach(function(button,index) {
   button.addEventListener('click', function(){
     selectionsound.play();
@@ -69,7 +68,9 @@ var buttons=document.querySelectorAll("#selectionbutt button");
       totalcoinongame=0;
       document.getElementById("bord-gif").style.display="none";
     } 
+   
      button.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px";
+     
   });
 });
  // low medium and high button ..
@@ -118,31 +119,62 @@ var buttons=document.querySelectorAll("#selectionbutt button");
      }
    }, 700);
  }
+ var RandomImage=[
+   "/images/Rlalpan.png",
+   "/images/Rkalapan.png",
+   "/images/Rthikri.png",
+   "/images/Rking.png",
+   "/images/Rjhandi.png",
+   "/images/Rchiri.png"
+   ];
  //create newale
+ var cardornumber=1;
  function createnewele(){
    for(var i = 1; i <=6; i++) {
-     let x = "random" + i;
+     var x = "random" + i;
+          var RandomNumberORImage = document.getElementById(`${x}`);
+          RandomNumberORImage.innerHTML = '';
      for (var j = 1; j< 20; j++) {
-       var newele = document.createElement("div");
-       newele.className = "ani";
-       newele.innerHTML = Math.floor((Math.random() * 6) + 1);
-       document.getElementById(`${x}`).appendChild(newele);
+       var RDM= Math.floor((Math.random() * 6) );
+       if(cardornumber==1){
+           var newele = document.createElement("img");
+           
+           newele.className = "ani";
+           newele.src = RandomImage[RDM];
+           RandomNumberORImage.appendChild(newele);
+       } else {
+         console.log(1);
+         var newele = document.createElement("div");
+      
+         newele.className = "ani";
+         newele.innerHTML=RDM;
+         RandomNumberORImage.appendChild(newele);
+       }
      }
    }
 }
  // random number create in random number box
  function randomnumber(){
    for(var i = 1; i <=6; i++) {
-     let x = "random" + i;
-     let y= Math.floor(Math.random() * 6)+1;  
-     document.getElementById(`${x}`).innerHTML=y;
-     document.getElementById(`${x}`).value=y;
+     var x = "random" + i;
+    var RandomNumberORImage = document.getElementById(`${x}`);
+    RandomNumberORImage.innerHTML="";
+    var RDM = Math.floor((Math.random() * 6));
+    if(cardornumber==1){
+    var newele = document.createElement("img");
+    
+   newele.src = RandomImage[RDM];
+   RandomNumberORImage.appendChild(newele);
+    } else {
+    document.getElementById(`${x}`).innerHTML=RDM;
+    }
+    document.getElementById(`${x}`).value=RDM;
    }
  }
 //level related features
  function levelup(x,y){
    localStorage.setItem("level",y);
-   localStorage.clear();
+//   localStorage.clear();
    document.getElementById("level").innerHTML=("level-"+y); 
    document.getElementById('win-loss-box').style.display='none';
    document.getElementById("notes").style.display='flex';
@@ -223,13 +255,16 @@ var buttons=document.querySelectorAll("#selectionbutt button");
  button.addEventListener('click', function(){
    insert.play();
    navigator.vibrate(30);
+   if(selectionNo>6){
+     selectionNo=selectionNo-6;
+   }
    let p="inv" +selectionNo;
    document.getElementById(`${p}`).innerHTML=x*(index+1)*100;
    document.getElementById(`${p}`).value=x*(index+1)*100;
  });
  });
- document.getElementById("computerpoints").innerHTML=computerpoints;
- document.getElementById("playerpoints").innerHTML=playerpoints;
+ document.getElementById("computerpoints").innerHTML='$'+computerpoints;
+ document.getElementById("playerpoints").innerHTML='$'+playerpoints;
  },2000)
  }
  var rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm5=0,rdm6=0;
@@ -279,8 +314,8 @@ function ifrandomvalue1(){
    document.getElementById('win-loss-box').style. display='flex';
       setTimeout(function() {
     document.getElementById('win-loss-box').style. display='none';
-    document.getElementById("playerpoints").innerHTML=playerpoints;
- document.getElementById("computerpoints").innerHTML=computerpoints;
+    document.getElementById("playerpoints").innerHTML='$'+playerpoints;
+ document.getElementById("computerpoints").innerHTML='$'+computerpoints;
    },3000)
    
  }
@@ -312,7 +347,7 @@ var readybuttoncontrol=1;
      rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm55=0,rdm6=0;
      
      playerpoints=playerpoints-totalcoin;
-     document.getElementById("playerpoints").innerHTML=playerpoints;
+     document.getElementById("playerpoints").innerHTML='$'+playerpoints;
      document.getElementById('timer-box').style.visibility='visible';
     startTimer();
     document.getElementById('bord-gif').style.display="flex";
@@ -385,7 +420,7 @@ win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(
  // overall win or loss ...
  if(win>totalcoin){   
    winloss();
-   document.getElementById('win').innerHTML=(win- totalcoin)+'+'+totalcoin;
+   document.getElementById('win').innerHTML=win;
    document.getElementById('loss').innerHTML='';
    document.getElementById('win-loss').innerHTML="You win";
     }else if(win==totalcoin){  
@@ -446,4 +481,63 @@ document.getElementById('medium').onclick = function() {
 document.getElementById('high').onclick = function() {
   shorting(2670);
 }
-localStorage.clear();
+
+// about button
+var about =true;
+document.getElementById('about-butt').onclick=function () {
+  if (about==true) {
+   about =false;
+    document.getElementById('about').style.display="block";
+    document.getElementById('rdmnum1').style.display="none";
+    document.getElementById('rdmnum2').style.display="none";
+  } else {
+    about=true;
+    document.getElementById('rdmnum1').style.display = "flex";
+    document.getElementById('rdmnum2').style.display = "flex";
+    document.getElementById('about').style.display="none";
+  }
+}
+  var sttng=true;
+document.getElementById('settings').onclick=function () {
+  if (sttng==true) {
+   sttng =false;
+    document.getElementById('setting').style.display="block";
+    document.getElementById('rdmnum1').style.display="none";
+    document.getElementById('rdmnum2').style.display="none";
+  } else {
+    sttng=true;
+    document.getElementById('rdmnum1').style.display = "flex";
+    document.getElementById('rdmnum2').style.display = "flex";
+    document.getElementById('setting').style.display="none";
+  }
+}
+
+//card or number
+var CardNumber=true;
+document.getElementById('setting').onclick=function () {
+ var CardStyle=document.getElementById('card-style');
+ var NumberStyle=document.getElementById('number-style');
+  if (CardNumber==true) {
+    CardNumber=false;
+       document.getElementById('num').style.display = "flex";
+    document.getElementById('img').style.display="none";
+    cardornumber=0;
+    NumberStyle.style.fontWeight='1000';
+    NumberStyle.style.color='blue';
+    CardStyle.style.fontWeight='100';
+    CardStyle.style.color='black';
+    CardStyle.style.background='white';
+    NumberStyle.style.background='yellow';
+  } else {
+    NumberStyle.style.fontWeight='100';
+    NumberStyle.style.color='black';
+    CardStyle.style.fontWeight = '1000';
+    CardStyle.style.color = 'blue';
+    CardStyle.style.background='yellow';
+    NumberStyle.style.background='white';
+    CardNumber=true;
+       document.getElementById('img').style.display = "flex";
+       document.getElementById('num').style.display = "none";
+       cardornumber=1;
+  }
+}

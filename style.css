@@ -11,7 +11,7 @@
      background-size: cover;
      overflow: hidden;
      max-height: 1000px;
-     max-width: 400px;;
+     max-width: 400px;
    }
    
    #login-page{
@@ -185,7 +185,7 @@ background-size: 100% 100%;
    }
    .points{
      width :20%;
-     font-size: 25px;
+     font-size: 15px;
    }
    #headergif img{
      height:55px;
@@ -455,7 +455,6 @@ background-size: 100% 100%;
  display: flex;
  justify-content: center;
  align-items:center;
- z-index: 6;
 }
 #level-update{
  text-align: center;
@@ -484,16 +483,41 @@ background-size: 100% 100%;
   color:black;
   text-shadow: 1px 1px 2px white;  
 }
-/*
-#clear:active {
-  color: red;
-  scale: .7;
-  background-color:rgba(255,100,100,.8);
-
+#random-number-bord{
+  overflow : scroll;
 }
-#ready:active {
-  color: red;
-  scale: .7;
-  background-color:rgba(255,100,100,.8);
+#about{
+  background : white;
+  width: 95%;
+  height: 95%;
+  justify-content: center;
+  padding :5px;
+display: none;
 }
-*/
+#about img{
+  height:180px;
+  width :102%;
+}
+#selectionbutt div img{
+  height: 30px;
+  width :30px;
+}
+#selectionbutt #num{
+  display: none;
+}
+#selectionbutt {
+position: relative;
+top:-15px;
+width: 97%;
+}
+#selectionbutt .numb{
+  display: none;
+}
+.randomvalue img{
+  height: 40px;
+  width :40px;
+}
+#setting{
+  display:none;
+  margin: 20px;
+}

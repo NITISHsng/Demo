@@ -38,12 +38,12 @@
          <img id="computer-logo" src="/image/img.jpeg">
         </div>
             <div class="points" id="computerpoints">
-             5
+             50000
             </div>
            <div id="headergif">
             <img src="/gif/header.gif" alt="header.gif">
            </div>
-            <div class="points" id="playerpoints">10
+            <div class="points" id="playerpoints">10000
             </div>
               <div class="header-logo">
                 <img id="player-logo" src="/image/mypic.jpg">
@@ -54,24 +54,27 @@
         <div class="other-player-box player-box1">
           <div>
              <img src="/image/plr1.png" alt="/image/img.jpeg">
-             <div>4000</div>
+             <div>$4000</div>
           </div>
           <div>
              <img src="/image/img2.jpeg" alt="/img2.jpeg">
-             <div>7000 </div>
+             <div>$7000 </div>
           </div>
           <div>
-              <img src="/image/img3.png" alt="/img3.png">
-              <div>1000</div>
+              <img src="/image/plr3.jpeg" alt="/img3.png">
+              <div>$1000</div>
           </div>
           <div>
              <img src="/image/plr2.jpeg" alt="/img.jpeg">
-             <div>9000</div>
+             <div>$9000</div>
           </div>
         </div>
         <div id="random-number-bord">
+              
+                
             <div id="timer-box"> <div id="timerbox1"> <div id="timerbox2"> <div id="timer">3</div></div></div></div>    
               <div class="randomvalue" id="rdmnum1">
+            
                 <div class="randomani" id="random1">0</div>
                 <div class="randomani" id="random2">0</div>
                 <div class="randomani" id="random3">0</div>
@@ -96,19 +99,30 @@
                  </div>
                </div>
              </div>
+               <div id="about">
+                  <h3>About:-</h3>
+               <img src="/image/headerabout.png" alt="">
+                <img src="/image/seclabout.png" alt="">
+               <img src="/image/secabout.png" alt="bkb">
+                <img src="/image/rdyabout.png" alt="">
+                <img src="/image/plrabout.png" alt="bkb">
+               </div>
+               <div id="setting">
+                 <button id="cord-or-number"> <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button>
+               </div>
         </div>
          <div class="other-player-box player-box1">
               <div>
                   <img src="/image/plr3.png" alt="/img.jpeg">
-                  <div>1000</div>
+                  <div>$1000</div>
               </div>
               <div>
                  <img src="/image/img2.jpeg" alt="/img2.jpeg">
-                  <div>3090</div>
+                  <div>$3090</div>
                </div>
                <div>
-                  <img src="/image/img3.png" alt="/img3.png">
-                  <div>5000</div>
+                  <img src="/image/plr3.jpeg" alt="/img3.png">
+                  <div>$5000</div>
                </div>
                <div>
                  <img src="/image/plr4.jpeg" alt="">
@@ -122,13 +136,37 @@
              <div id="total-coin"></div>
           </div>
           <div id="selectionbutt">
-            <button id="inbut1"> 1</button>
-            <button id="inbut2"> 2</button>
-            <button id="inbut3"> 3</button>
-            <button id="inbut4"> 4</button>
-            <button id="inbut5"> 5</button>
-            <button id="inbut6"> 6</button>
+          <div id="num">
+            <button id="inbut1">1</button>
+            <button id="inbut2">2 </button>
+            <button id="inbut3">3 </button>
+            <button id="inbut4">4 </button>
+            <button id="inbut5">5 </button>
+            <button id="inbut6">6 </button>
+          
+            </div>
+             <div id="img">
+             <button id="inbut1">
+                <img src="/images/lalpan.png" alt="lalpan.png" class="crd">
+              </button>
+              <button id="inbut2"> <img src="/images/kalapan.png" alt="lalpan.png" class="crd">
+              </button>
+              <button id="inbut3">
+                <img src="/images/thikri.png" alt="lalpan.png" class="crd">
+              </button>
+              <button id="inbut4">
+                <img src="/images/king.png" alt="lalpan.png" class="crd">
+              </button>
+              <button id="inbut5">
+                <img src="/images/jhandi.png" alt="lalpan.png" class="crd">
+              </button>
+              <button id="inbut6">
+                <img src="/images/chiri.png" alt="lalpan.png" class="crd">
+              </button>
           </div>
+        
+          </div>
+         
           <div>
             <div id="inv1">000</div>
             <div id="inv2">000</div>
@@ -141,8 +179,8 @@
   </div>
   <div class="left-right-box right-box">
         <div class="clear-input-box">
-         <button>ABOUT</button>
-        <button><i class="fa-solid fa-gear"></i></button>
+         <button id="about-butt">ABOUT</button>
+        <button id="settings"><i class="fa-solid fa-gear"></i></button>
         <div class="low-med-high">
            <button id="low">LOW</button>
            <button id="medium">MEDIUM</button>
@@ -154,7 +192,9 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
-localStorage.clear();
+//localStorage.clear();
+document.getElementById("login-page").style.display='none';
+                document.getElementById("contanar").style.display='flex';
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
     document.getElementById('login').onclick=function(){
