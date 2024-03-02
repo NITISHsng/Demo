@@ -99,19 +99,47 @@
                  </div>
                </div>
              </div>
-               <div id="about">
-                  <h3>About:-</h3>
-               <img src="/image/headerabout.png" alt="">
-                <img src="/image/seclabout.png" alt="">
-               <img src="/image/secabout.png" alt="bkb">
-                <img src="/image/rdyabout.png" alt="">
-                <img src="/image/plrabout.png" alt="bkb">
-               </div>
+            <div id="about">
+    <h3>About</h3>
+    <ol>
+        <li>
+            <p>Your logo and points</p>
+            <img src="/image/headerabout.png" alt="">
+        </li>
+        <li>
+            <p>Click the button you guessed</p>
+            <img src="/image/seclabout.png" alt="">
+        </li>
+        <li>
+            <p>Choose the number of points you want to bet</p>
+            <img src="/image/secabout.png" alt="bkb">
+        </li>
+        <li>
+            <p>Click the ready button to start the game</p>
+            <img src="/image/rdyabout.png" alt="">
+        </li>
+        <li>
+            <p>Accounts of other players</p>
+            <img src="/image/plrabout.png" alt="bkb">
+        </li>
+        <li>
+            <p>You can customize settings, including:</p>
+            <ul>
+              <li>RESET Button</li>
+                <li>Background music</li>
+                <li>Change card symbols to numbers</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+               
                <div id="setting">
-                 <button id="card-or-number"> <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button><br>
-                 <button id="restart">RESET</button>
-                 <br>
-                 <button id="bg-music">Background music</button>
+                  <button id="restart">RESET</button>
+                  <br>
+                 <button id="card-or-number">
+                    <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button><br>   
+                 <button id="bg-music">BACKGROUND MUSIC</button>
                </div>
         </div>
          <div class="other-player-box player-box1">
@@ -170,7 +198,7 @@
         
           </div>
          
-          <div>
+          <div id="inv">
             <div id="inv1">000</div>
             <div id="inv2">000</div>
             <div id="inv3">000</div>
@@ -195,7 +223,8 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
-
+document.getElementById("login-page").style.display = 'none';
+document.getElementById("contanar").style.display = 'flex';
 //localStorage.clear();
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
@@ -244,6 +273,7 @@ var signuplogin=true;
                 signuplogin=false;
                 welcome.play();
                 bgmusic.play();
+                bgmusic.loop=true;
             }
         } catch (error) {
             const errorMessage = error.message;

@@ -50,6 +50,7 @@ function selection(){
       let q="random"+i;
       document.getElementById(`${q}`).innerHTML=0;
       document.getElementById(`${x}`).innerHTML='000';
+      document.getElementById(`${x}`).value=0;
       buttons[i-1].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
   }else{
@@ -72,7 +73,6 @@ var totalcoinongame=1;
     } 
    
      button.style.boxShadow = "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px";
-     
   });
 });
  // low medium and high button ..
@@ -161,11 +161,10 @@ var totalcoinongame=1;
      var x = "random" + i;
     var RandomNumberORImage = document.getElementById(`${x}`);
     RandomNumberORImage.innerHTML="";
-    var RDM = Math.floor((Math.random() * 6));
+    var RDM = Math.floor((Math.random() * 6)+1);
     if(cardornumber==1){
     var newele = document.createElement("img");
-    
-   newele.src = RandomImage[RDM];
+   newele.src = RandomImage[RDM-1];
    RandomNumberORImage.appendChild(newele);
     } else {
     document.getElementById(`${x}`).innerHTML=RDM;
@@ -374,8 +373,8 @@ var readybuttoncontrol=1;
  for (var i = 1; i <=6; i++) {
  let p="random" +i;
  let q=document.getElementById(`${p}`).value;
- let x="inv" +i;
-     let y=document.getElementById(`${x}`).value;
+var x="inv" +i;
+ var y=document.getElementById(`${x}`).value;
       if (y==null) {
     document.getElementById(`${x}`).value=0;
       }
@@ -454,9 +453,9 @@ document.getElementById('win-loss').innerHTML="Your loss";
      levelup(0, 1);
    }
  }
- selectionNo=12;// out of selection button 
+ selectionNo=20;// out of selection button 
  for (var i = 1; i<=6; i++){
-      let p="inv" +i;
+      var p="inv" +i;
        document.getElementById(`${p}`).value=0;
  }
     },6000);
@@ -559,6 +558,7 @@ document.getElementById('bg-music').onclick=function () {
   } else {
     bgmsc=1;
     bgmusic.play();
+    bgmusic.loop=true;
     document.getElementById('bg-music').style.color='rgba(120,0,0,1)';
   }
 }
