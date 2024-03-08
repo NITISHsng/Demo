@@ -17,7 +17,6 @@ var playerpoints=0;
  var  selectionsound=new Audio("/sound/insert.mp3");
  var  bgmusic=new Audio("/sound/backgroundmusic.mp3");
  
-// localStorage.clear();
  var level=localStorage.getItem('level');
  
  if (level==null) {
