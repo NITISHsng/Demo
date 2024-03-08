@@ -28,6 +28,17 @@ var playerpoints=0;
  }
 
 
+//alert smg
+
+function AlertSmg(x) {
+  document.getElementById('alert-smg').style.display='flex';
+  document.getElementById('alert-smg').innerHTML=x;
+  setTimeout(function fname() {
+   document.getElementById('alert-smg').style.display='none';
+  },2000)
+}
+
+
  function suggestvalue(){
    if(level==1){
      X=1;
@@ -50,6 +61,9 @@ function selection(){
       let q="random"+i;
       document.getElementById(`${q}`).innerHTML=0;
       document.getElementById(`${x}`).innerHTML='000';
+     var plr="other-plr"+i;
+      document.getElementById(`${plr}`).value = 0;
+      document.getElementById(`${plr}`).innerHTML = '$' + '0000';
       document.getElementById(`${x}`).value=0;
       buttons[i-1].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
@@ -99,7 +113,10 @@ var totalcoinongame=1;
        document.getElementById(`${p}`).innerHTML="000";
        document.getElementById(`${p}`).value=0;
        document.getElementById(`${q}`).innerHTML=0;
-      }
+       var plr="other-plr"+i;
+       document.getElementById(`${plr}`).value=0;
+      document.getElementById(`${plr}`).innerHTML= '$'+'0000';
+            }
       document.getElementById('total-coin').value=0;
       document.getElementById('bord-gif').style.display='none';
     }else{
@@ -172,9 +189,59 @@ var totalcoinongame=1;
     document.getElementById(`${x}`).value=RDM;
    }
  }
+ 
+ 
+ //profile
+var profileLv1=[
+ '/image/img1lv1.jpeg',
+ '/image/img2lv1.jpeg',
+ '/image/img3lv1.jpeg',
+ '/image/img4lv1.jpeg',
+ '/image/img5lv1.jpeg',
+ '/image/img6lv1.jpeg',
+ '/image/img7lv1.jpeg',
+  '/image/img8lv1.jpeg',
+  ];
+ var profileLv2= [
+  '/image/img1lv2.jpeg',
+  '/image/img2lv2.jpeg',
+  '/image/img3lv2.jpeg',
+  '/image/img4lv2.jpeg',
+  '/image/img5lv2.jpeg',
+  '/image/img6lv2.jpeg',
+  '/image/img7lv2.jpeg',
+   '/image/img8lv2.jpeg',
+   ];
+   var profileLv3=[
+ '/image/img1lv3.jpeg',
+ '/image/img2lv3.jpeg',
+ '/image/img3lv3.jpeg',
+ '/image/img4lv3.jpeg',
+ '/image/img5lv3.jpeg',
+ '/image/img6lv3.jpeg',
+ '/image/img7lv3.jpeg',
+ '/image/img8lv3.jpeg',
+  ];
+function CreatProfile(){
+  for (var i = 1; i <=8; i++) {
+   var pro = 'profile' + i;
+   if(level=='1'){
+    document.getElementById('player-logo').src = profileLv2[5];
+    document.getElementById(`${pro}`).src = profileLv1[i-1];
+   } else if (level=='2'){
+     document.getElementById(`${pro}`).src = profileLv2[i-1];
+     document.getElementById('player-logo').src = profileLv3[3];
+   } else if (level=='3' || level=='4') {
+     document.getElementById(`${pro}`).src = profileLv3[i-1];
+     document.getElementById('player-logo').src = profileLv3[2];
+   }
+  }
+}  
+CreatProfile();
 //level related features
  function levelup(x,y){
    localStorage.setItem("level",y);
+   OtherPlayerCreatePoints(y);
 //   localStorage.clear();
    document.getElementById("level").innerHTML=("level-"+y); 
    document.getElementById('win-loss-box').style.display='none';
@@ -227,11 +294,8 @@ var totalcoinongame=1;
   } else {
     levelup(1,'4');
   }
- break;
+  break;
  }
-
-// localStorage.setItem("level", level);
-
  if (level == 1) {
     x = 1;
   } else if (level == 2) {
@@ -325,7 +389,29 @@ var totalcoin=0;
 var ready;
 var readybuttoncontrol=1;
  document.getElementById("ready").onclick = function(){
+   document.getElementById('about').style.display="none";
+   document.getElementById('setting').style.display="none";
+   document.getElementById('rdmnum1').style.display = "flex";
+    document.getElementById('rdmnum2').style.display = "flex";
+  
+    
    if(readybuttoncontrol==1){
+     setTimeout(function() {
+          
+     for (var i = 1; i <=8; i++) {
+            let ss= Math.floor(Math.random()*2) + 1;
+      let kk= Math.floor(Math.random() * 4) + 1;
+        if(ss==1){
+              var plr= "other-player" + i + "-coin";
+              var xyz=document.getElementById(`${plr}`).value;
+              xyz=xyz+investarr[i-1]*kk;
+             document.getElementById(`${plr}`).innerHTML=xyz;
+             document.getElementById(`${plr}`).value=xyz;
+            }
+        }
+        },6000)
+       
+        
    ready123.play();
     totalcoin=0;
    for (var i = 1; i <=6; i++) {
@@ -336,7 +422,7 @@ var readybuttoncontrol=1;
      document.getElementById('total-coin').innerHTML=totalcoin;
    }
    if(totalcoin==0){    
- alert("select a number or card");
+  AlertSmg("Select a number or card");
  }else{
    if(playerpoints >=totalcoin){
      readybuttoncontrol=0;
@@ -345,12 +431,12 @@ var readybuttoncontrol=1;
   document.getElementById('ready').style.boxShadow = "0px 0px 3px 3px pink";
      selection();
     timersound.play();
-     rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm55=0,rdm6=0;
-     
+     rdm1=0,rdm2=0,rdm3=0,rdm4=0,rdm5=0,rdm6=0;
      playerpoints=playerpoints-totalcoin;
      document.getElementById("playerpoints").innerHTML='$'+playerpoints;
      document.getElementById('timer-box').style.visibility='visible';
     startTimer();
+    RobotSelect();
     document.getElementById('bord-gif').style.display="flex";
     totalcoinongame=1;
     setTimeout(function(){
@@ -428,7 +514,7 @@ win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(
        winloss();
   document.getElementById('win').innerHTML=totalcoin;
    document.getElementById('loss').innerHTML='';
-document.getElementById('win-loss').innerHTML="Drown";
+document.getElementById('win-loss').innerHTML="Drow";
  }else if(win<totalcoin){   
    winloss();
    document.getElementById('win').innerHTML='';
@@ -442,6 +528,7 @@ document.getElementById('win-loss').innerHTML="Your loss";
  }else if(level==3){ levelup(1,'4');
  }else if(level==4){ levelup(1,'5');
  }
+ CreatProfile();
  } 
 // if level.down
  if (playerpoints <= 0) {
@@ -449,9 +536,10 @@ document.getElementById('win-loss').innerHTML="Your loss";
    } else if (level == 3) { levelup(0, '2');
    } else if (level == 2) { levelup(0, '1');
    } else if (level == 1) {
-     alert("Sorry you are a loser");
-     levelup(0, 1);
+     AlertSmg("Sorry you are a loser");
+     levelup(0,'1');
    }
+   CreatProfile();
  }
  selectionNo=20;// out of selection button 
  for (var i = 1; i<=6; i++){
@@ -459,10 +547,10 @@ document.getElementById('win-loss').innerHTML="Your loss";
        document.getElementById(`${p}`).value=0;
  }
     },6000);
-  }else{ alert("check Your coin");  }
+  }else{ AlertSmg("C=heck Your coin");  }
  } 
  } else {
-   alert("wait...")
+   AlertSmg("Wait...")
  }
  }
 function shorting(x) {
@@ -472,7 +560,6 @@ function shorting(x) {
     behavior: 'smooth'
   });
 }
-
 document.getElementById('low').onclick = function() {
   shorting(0);
 }
@@ -482,7 +569,6 @@ document.getElementById('medium').onclick = function() {
 document.getElementById('high').onclick = function() {
   shorting(2670);
 }
-
 // about button
 var about =true;
 document.getElementById('about-butt').onclick=function () {
@@ -491,6 +577,8 @@ document.getElementById('about-butt').onclick=function () {
     document.getElementById('about').style.display="block";
     document.getElementById('rdmnum1').style.display="none";
     document.getElementById('rdmnum2').style.display="none";
+    document.getElementById('setting').style.display="none";
+    sttng=true;
   } else {
     about=true;
     document.getElementById('rdmnum1').style.display = "flex";
@@ -505,6 +593,7 @@ document.getElementById('settings').onclick=function () {
     document.getElementById('setting').style.display="block";
     document.getElementById('rdmnum1').style.display="none";
     document.getElementById('rdmnum2').style.display="none";
+    document.getElementById('about').style.display="none";
   } else {
     sttng=true;
     document.getElementById('rdmnum1').style.display = "flex";
@@ -512,7 +601,6 @@ document.getElementById('settings').onclick=function () {
     document.getElementById('setting').style.display="none";
   }
 }
-
 //card or number
 var CardNumber=true;
 document.getElementById('card-or-number').onclick=function () {
@@ -542,10 +630,12 @@ document.getElementById('card-or-number').onclick=function () {
        cardornumber=1;
   }
 }
+
 document.getElementById('restart').onclick=function () {
   let conf=confirm("confirm reset");
  if(conf==true){
   levelup(1,"1");
+  CreatProfile();
 }
 }
 
@@ -562,3 +652,131 @@ document.getElementById('bg-music').onclick=function () {
     document.getElementById('bg-music').style.color='rgba(120,0,0,1)';
   }
 }
+document.getElementById('fixed-level').onclick=function () {
+ document.getElementById('fixed-level-value').style.display='block';
+}
+var fixedlevel=document.querySelectorAll("#fixed-level-value button");
+ fixedlevel.forEach(function(button,index) {
+  button.addEventListener('click', function(){
+    levelup(3,(index+1).toString());
+   
+    document.getElementById('rdmnum1').style.display = "flex";
+    document.getElementById('rdmnum2').style.display = "flex";
+    document.getElementById('setting').style.display="none";
+  var ss= document.getElementById("random-number-bord");
+  CreatProfile();
+  ss.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  document.getElementById('fixed-level-value').style.display='none';
+  });
+});
+//robot
+ function OtherPlayerCreatePoints(x) {
+   var p,q;
+   switch(x){
+ case('1'):
+   y=100;
+   p=10000;
+   q=50000;
+ break;
+ case('2'):
+   y=1000;
+   p =100000;
+  q=500000;
+ break;
+ case('3'):
+   y=10000;
+   p=1000000;
+   q=5000000;  
+ break;
+ case('4'):
+      y=100000;
+   p= 10000000;
+   q= 1000000000;
+ break;
+ }
+   for (var i = 1; i <= 8; i++) { 
+     let PlayerCoin = Math.floor(Math.random() * (q/y - p/y + 1)) * y+ p/2;
+        var plr = "other-player"+ i +"-coin";
+       document.getElementById(`${plr}`).value=PlayerCoin;
+       document.getElementById(`${plr}`).innerHTML='$'+PlayerCoin;
+       document.getElementById(`${plr}`).value=PlayerCoin;
+    }
+ }
+function OtherPlayerCoinInverse(i,j,x){
+  var plr = "other-player" + x + "-coin";
+  if(i>j){
+    setTimeout(function() {
+      document.getElementById(`${plr}`).innerHTML= '$'+i;
+     document.getElementById(`${plr}`).value=i;
+        i=i-j;
+     OtherPlayerCoinInverse(i,j,x);
+    }, 200)
+    }
+}
+function OtherPlayerCoin(i,j,x){
+  var plr="other-plr"+x;
+  if( i<j){
+    i=i+Math.floor(j/10);
+    setTimeout(function() {
+      document.getElementById(`${plr}`).innerHTML= '$'+i;
+      OtherPlayerCoin(i,j,x);
+    }, 50)
+    }
+}
+var investarr=[0,0,0,0,0,0,0,0];
+function RobotSelect() {
+    for (var i = 1; i <= 8; i++) { 
+        var plr = "other-player" + i + "-coin";
+        var x = Math.floor((Math.random() * 6) + 1);
+        var xy=document.getElementById(`${plr}`).value;
+        var pro = 'profile' + i;
+      var nn = Math.floor((Math.random() * 8) + 1);  
+       if(level=='1' && xy<500){
+         xy=10000-xy;
+            document.getElementById(`${pro}`).src = profileLv1[nn - 1];
+         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
+
+       } else if (level=='2' && xy<10000) {
+         xy =100000-xy;
+         document.getElementById(`${pro}`).src = profileLv2[nn - 1];
+         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
+
+       } else if (level=='3' && xy<100000){
+         xy=1000000-xy;
+         document.getElementById(`${pro}`).src = profileLv3[nn - 1];
+         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
+       } else if (level=='4' && xy<100000){
+         xy=10000000-xy;
+         document.getElementById(`${pro}`).src = profileLv3[nn - 1];
+         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
+       }
+        var y=0;
+      y = Math.floor((Math.random() * Math.floor(xy/100)) + 1);
+      
+    var pl="other-plr"+x;
+     var z= document.getElementById(`${pl}`).value;
+     if(z==null){
+       z=0;
+     }
+        if(xy>y*100){
+          y=(y*100)+z;
+        } else if (xy>y*10) {
+          var y=(y*10);
+        }
+      investarr[i-1]=y;
+        OtherPlayerCoin(z,y,x);
+        OtherPlayerCoinInverse(xy,y,i);
+        setTimeout(function() {
+          document.getElementById(`${pl}`).innerHTML = '$' + y;
+        }, 3010)
+    }
+}
+
+

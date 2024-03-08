@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body>
+<body oncontextmenu="return false">
   <div id="login-page">
      <div id="login-box">
        <div class="login-content">
@@ -25,6 +25,7 @@
      </div>
   </div>
   <div id="contanar">
+    
     <div class="left-right-box left-box">
       <div class="clear-input-box" id="all-suggestion">
         <!-all suggest value-->
@@ -53,42 +54,60 @@
       <div class="bord">
         <div class="other-player-box player-box1">
           <div>
-             <img src="/image/plr1.png" alt="/image/img.jpeg">
-             <div>$4000</div>
+             <img id="profile1" src="" alt="profile1">
+             <div id="other-player1-coin">4000</div>
           </div>
           <div>
-             <img src="/image/img2.jpeg" alt="/img2.jpeg">
-             <div>$7000 </div>
+             <img id="profile2" src="" alt="profile2">
+             <div id="other-player2-coin">7000 </div>
           </div>
           <div>
-              <img src="/image/plr3.jpeg" alt="/img3.png">
-              <div>$1000</div>
+              <img id="profile3"  src="" alt="profile3">
+              <div id="other-player3-coin">1000</div>
           </div>
           <div>
-             <img src="/image/plr2.jpeg" alt="/img.jpeg">
-             <div>$9000</div>
+             <img id="profile4" src="" alt="profile4">
+             <div id="other-player4-coin">9000</div>
           </div>
         </div>
         <div id="random-number-bord">
-              
-                
             <div id="timer-box"> <div id="timerbox1"> <div id="timerbox2"> <div id="timer">3</div></div></div></div>    
               <div class="randomvalue" id="rdmnum1">
-            
+                <div class="rdm-child">
                 <div class="randomani" id="random1">0</div>
+                <div class="other-player-coin"  id="other-plr1">$0000</div>
+                </div>
+            <div class="rdm-child">
                 <div class="randomani" id="random2">0</div>
+                    <div class="other-player-coin"  id="other-plr2">$0000</div>
+                  </div>
+               <div class="rdm-child">
                 <div class="randomani" id="random3">0</div>
+                     <div class="other-player-coin"  id="other-plr3">$0000</div>
+                  </div>
               </div>
               <div class="randomvalue" id="rdmnum2">
-                <div class="randomani" id="random4">0</div>
-                <div class="randomani" id="random5">0</div>
-                <div class="randomani" id="random6">0</div>
+               <div class="rdm-child">
+                   <div class="randomani" id="random4">0</div>
+                   <div class="other-player-coin"  id="other-plr4">$0000</div>
+                 </div>
+                 <div class="rdm-child">
+                   <div class="randomani" id="random5">0</div>
+                   <div class="other-player-coin"  id="other-plr5">$0000</div>
+                 </div>
+                 <div class="rdm-child">
+                   <div class="randomani" id="random6">0</div>
+                   <div class="other-player-coin"  id="other-plr6">$0000</div>
+                 </div>
               </div>
               <div id="win-loss-box">
                 <div id="win-loss">You win</div><div id="result-coin">
                   <div id="win"></div>
                   <div id="loss"></div>
                 </div>
+              </div>
+              <div id="alert-smg">
+                alert
               </div>
              <div id="notes">
                <div id="level-update">
@@ -122,20 +141,29 @@
             <p>Accounts of other players</p>
             <img src="/image/plrabout.png" alt="bkb">
         </li>
-        <li>
+        <li>Level-1 
+           <p></p>
+        </li>
+       <li>
             <p>You can customize settings, including:</p>
             <ul>
-              <li>RESET Button</li>
-                <li>Background music</li>
-                <li>Change card symbols to numbers</li>
+              <li>Reset Button</li>
+              <li>Level CHOOSE</li>
+              <li>Background music</li>
+             <li>Change card symbols to numbers</li>
             </ul>
         </li>
     </ol>
 </div>
-
-               
                <div id="setting">
                   <button id="restart">RESET</button>
+                  <br>
+                    <button id="fixed-level">LEVEL CHOOSE</button>
+                       <div id="fixed-level-value">                         <button>Level-1</button><br>
+                          <button >Level-2</button><br>
+                           <button>Level-3</button><br>
+                            <button>Level-4</button>
+                       </div>
                   <br>
                  <button id="card-or-number">
                     <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button><br>   
@@ -144,20 +172,20 @@
         </div>
          <div class="other-player-box player-box1">
               <div>
-                  <img src="/image/plr3.png" alt="/img.jpeg">
-                  <div>$1000</div>
+                  <img id="profile5" src="" alt="profile5">
+                  <div id="other-player5-coin">1000</div>
               </div>
               <div>
-                 <img src="/image/img2.jpeg" alt="/img2.jpeg">
-                  <div>$3090</div>
+                 <img id="profile6" src="" alt="profile6">
+                  <div id="other-player6-coin">3090</div>
                </div>
                <div>
-                  <img src="/image/plr3.jpeg" alt="/img3.png">
-                  <div>$5000</div>
+                  <img id="profile7" src="" alt="profile7">
+                  <div id="other-player7-coin">5000</div>
                </div>
                <div>
-                 <img src="/image/plr4.jpeg" alt="">
-                 <div>$7000</div>
+                 <img id="profile8" src="" alt="profile8">
+                 <div id="other-player8-coin">7000</div>
               </div>
             </div>
       </div>
@@ -223,8 +251,6 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
-
-//localStorage.clear();
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
     document.getElementById('login').onclick=function(){
@@ -248,18 +274,17 @@ var signuplogin=true;
         messagingSenderId: "13627778403",
         appId: "1:13627778403:web:3a5450a6b88b867ee29f56"
     };
-
+document.getElementById("login-page").style.display='none';
+                document.getElementById("contanar").style.display='flex';
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const form = document.getElementById("registrationForm");
 
     form.addEventListener("submit", async (e) => {
-      
         e.preventDefault();
         const mail = document.getElementById("mail").value;
         const pass = document.getElementById("pass").value;
-
         try {
             if (signuplogin) {
                 await createUserWithEmailAndPassword(auth, mail, pass);
@@ -292,8 +317,5 @@ var signuplogin=true;
             alert(`Sign up failed: ${errorMessage}`);
         }
     }
-
 </script>
-
-
 </body>
