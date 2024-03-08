@@ -251,6 +251,7 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
+
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
     document.getElementById('login').onclick=function(){
@@ -274,8 +275,7 @@ var signuplogin=true;
         messagingSenderId: "13627778403",
         appId: "1:13627778403:web:3a5450a6b88b867ee29f56"
     };
-document.getElementById("login-page").style.display='none';
-                document.getElementById("contanar").style.display='flex';
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
