@@ -263,7 +263,6 @@ var level=localStorage.getItem('level');
 if(level != null){
   document.getElementById("login-page").style.display='none';
   document.getElementById("contanar").style.display='flex';
-    signuplogin=false;
 }
     document.getElementById('login').onclick=function(){
         if(signuplogin==false){
@@ -296,7 +295,7 @@ if(level != null){
         const mail = document.getElementById("mail").value;
         const pass = document.getElementById("pass").value;
         try {
-            if (signuplogin) {
+            if (signuplogin==true) {
                 await createUserWithEmailAndPassword(auth, mail, pass);
                 alert("User created successfully. You can now login.");
             } else {

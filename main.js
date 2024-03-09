@@ -783,9 +783,9 @@ document.getElementById('log-out').onclick=function fname(){
 
  document.getElementById('alert-smg').style.display='flex';
  sttng=true;
+ */
     document.getElementById('rdmnum1').style.display = "flex";
     document.getElementById('rdmnum2').style.display = "flex";
-    */
    document.getElementById('setting').style.display="none";
   document.getElementById("login-page").style.display='flex';
   document.getElementById("contanar").style.display='none';
