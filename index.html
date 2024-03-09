@@ -107,7 +107,6 @@
                 </div>
               </div>
               <div id="alert-smg">
-                alert
               </div>
              <div id="notes">
                <div id="level-update">
@@ -141,8 +140,13 @@
             <p>Accounts of other players</p>
             <img src="/image/plrabout.png" alt="bkb">
         </li>
-        <li>Level-1 
-           <p></p>
+        <li>Rules:-
+           <ul type="square">
+             <li>level-1:If you bet x coins, your chosen number or card comes in one of the 6 cells you will get x*1 coins back but if more than one you will get x*(n+1) coins back.</li>
+             <li>level-2:If you bet x coins, your chosen number or card comes in one of the 6 cells you get 0 coins back but if more than one you get x*(n+1) coins back.</li>
+             <li>level-3:If you bet x coins, your chosen number or card comes in one of the 6 cells you get 0 coins back but if more than one you get x*n coins back.</li>
+             <li>level-4:If you bet x coins, your chosen number or card comes in one of the 6 cells you get 0 coins back but if more than one you get x*n coins back.</li>
+           </ul>
         </li>
        <li>
             <p>You can customize settings, including:</p>
@@ -168,6 +172,7 @@
                  <button id="card-or-number">
                     <span id="card-style">CARD</span>/<span id="number-style">NUMBER</span></button><br>   
                  <button id="bg-music">BACKGROUND MUSIC</button>
+                 <button id="log-out">LOG OUT</button>
                </div>
         </div>
          <div class="other-player-box player-box1">
@@ -251,9 +256,14 @@
   </div>
 <script src="main.js"></script>
 <script type="module">
-
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
+var level=localStorage.getItem('level');
+if(level != null){
+  document.getElementById("login-page").style.display='none';
+  document.getElementById("contanar").style.display='flex';
+    signuplogin=false;
+}
     document.getElementById('login').onclick=function(){
         if(signuplogin==false){
             signuplogin=true;
@@ -275,7 +285,6 @@ var signuplogin=true;
         messagingSenderId: "13627778403",
         appId: "1:13627778403:web:3a5450a6b88b867ee29f56"
     };
-
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();

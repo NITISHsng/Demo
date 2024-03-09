@@ -356,33 +356,33 @@ background-size: 100% 100%;
    left:00px;
    letter-spacing:10px;
    font-weight: 500;
-   animation: anii 3s alternate infinite;
+   animation: anii 4s alternate infinite;
    animation-direction:alternate-reverse;
    animation-iteration-count: 1;
    display: none;
 }
 @keyframes anii {
   0% {
-    left: 0px;
+    left: 00px;
     color: red;
   }
-  25% {
+  30% {
     color: yellow;
-    left: -100px;
+    left: -300px;
     font-size: 3vh;
   }
-  50% {
+  60% {
     color: green;
     font-size: 4vh;
-    left: -200px;
+    left: 100px;
   }
-  75% {
+  70% {
     color: pink;
-    left: 00px;
+    left: -10px;
     font-size: 5vh;
   }
   100% {
-    left: -150px;
+    left: 0px;
   }
 }
 #bord-gif{

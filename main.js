@@ -1,22 +1,20 @@
-
-var height=screen.height;
- var width=screen.width;
-var a=width/2;
-var b=height*70/100-100;
- document.getElementById("contanar").style.transformOrigin =a + "px " + a + "px";
-document.getElementById('random-number-bord').style.width=b+'px';
-var computerpoints=0;
-var playerpoints=0;
- var ready123=new Audio("/sound/ready123.mp3");
- var timersound=new Audio("/sound/timersound.mp3");
- var clear=new Audio("/sound/clear.mp3");
- var cancel=new Audio("/sound/cancel.mp3");
- var chain=new Audio("/sound/chain.mp3");
- var  insert=new Audio("/sound/selection.mp3");
- var  select=new Audio("/sound/select.mp3");
- var  selectionsound=new Audio("/sound/insert.mp3");
- var  bgmusic=new Audio("/sound/backgroundmusic.mp3");
- 
+var height = screen.height;
+var width = screen.width;
+var a = width / 2;
+var b = height * 70 / 100 - 100;
+document.getElementById("contanar").style.transformOrigin = a + "px " + a + "px";
+document.getElementById('random-number-bord').style.width = b + 'px';
+var computerpoints = 0;
+var playerpoints = 0;
+var ready123 = new Audio("/sound/ready123.mp3");
+var timersound = new Audio("/sound/timersound.mp3");
+var clear = new Audio("/sound/clear.mp3");
+var cancel = new Audio("/sound/cancel.mp3");
+var chain = new Audio("/sound/chain.mp3");
+var insert = new Audio("/sound/selection.mp3");
+var select = new Audio("/sound/select.mp3");
+var selectionsound = new Audio("/sound/insert.mp3");
+var bgmusic = new Audio("/sound/backgroundmusic.mp3");
  var level=localStorage.getItem('level');
  
  if (level==null) {
@@ -26,17 +24,14 @@ var playerpoints=0;
    levelup(2,level);
  }
 
-
 //alert smg
-
 function AlertSmg(x) {
   document.getElementById('alert-smg').style.display='flex';
   document.getElementById('alert-smg').innerHTML=x;
   setTimeout(function fname() {
-   document.getElementById('alert-smg').style.display='none';
+  document.getElementById('alert-smg').style.display='none';
   },2000)
 }
-
 
  function suggestvalue(){
    if(level==1){
@@ -52,22 +47,22 @@ function AlertSmg(x) {
  var selectionNo;
 // select a button shadow change
 var buttons=document.querySelectorAll("#selectionbutt div button");
-function selection(){
-  if(ready==true){
-    ready=false;
-    for (var i = 1; i <=6; i++) {
-      let x="inv"+i;
-      let q="random"+i;
-      document.getElementById(`${q}`).innerHTML=0;
-      document.getElementById(`${x}`).innerHTML='000';
-     var plr="other-plr"+i;
+function selection() {
+  if (ready == true) {
+    ready = false;
+    for (var i = 1; i <= 6; i++) {
+      let x = "inv" + i;
+      let q = "random" + i;
+      document.getElementById(`${q}`).innerHTML = 0;
+      document.getElementById(`${x}`).innerHTML = '000';
+      var plr = "other-plr" + i;
       document.getElementById(`${plr}`).value = 0;
       document.getElementById(`${plr}`).innerHTML = '$' + '0000';
-      document.getElementById(`${x}`).value=0;
-      buttons[i-1].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
+      document.getElementById(`${x}`).value = 0;
+      buttons[i - 1].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
   }else{
-    for (var i = 0; i < 12; i++){
+    for (var i = 0; i < 12; i++) {
       buttons[i].style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.7) 0px 15px 12px";
     }
   }
@@ -189,7 +184,6 @@ var totalcoinongame=1;
    }
  }
  
- 
  //profile
 var profileLv1=[
  '/image/img1lv1.jpeg',
@@ -249,7 +243,7 @@ CreatProfile();
  document.getElementById("level-comment").innerHTML=("Try again");
  }else if(x==1){
  if(y!=5){
- document.getElementById("level-comment").innerHTML=("Congratulations! <br> You've reached a level "+y);
+ document.getElementById("level-comment").innerHTML=("Congratulations! <br> You've reached level "+y+'!');
  }else{
  document.getElementById("level-comment").innerHTML=("Congratulations! <br> You finish this game");  
  }
@@ -392,8 +386,6 @@ var readybuttoncontrol=1;
    document.getElementById('setting').style.display="none";
    document.getElementById('rdmnum1').style.display = "flex";
     document.getElementById('rdmnum2').style.display = "flex";
-  
-    
    if(readybuttoncontrol==1){
      setTimeout(function() {
           
@@ -408,9 +400,7 @@ var readybuttoncontrol=1;
              document.getElementById(`${plr}`).value=xyz;
             }
         }
-        },6000)
-       
-        
+    },6000)
    ready123.play();
     totalcoin=0;
    for (var i = 1; i <=6; i++) {
@@ -426,7 +416,7 @@ var readybuttoncontrol=1;
    if(playerpoints >=totalcoin){
      readybuttoncontrol=0;
      navigator.vibrate(40);
-      // ready button clik animetion
+  // ready button clik animetion
   document.getElementById('ready').style.boxShadow = "0px 0px 3px 3px pink";
      selection();
     timersound.play();
@@ -454,7 +444,7 @@ var readybuttoncontrol=1;
       randomnumber();
       ready=true;
      let win=0;
-     // count random value 
+  // count random value 
  for (var i = 1; i <=6; i++) {
  let p="random" +i;
  let q=document.getElementById(`${p}`).value;
@@ -463,7 +453,7 @@ var x="inv" +i;
       if (y==null) {
     document.getElementById(`${x}`).value=0;
       }
-      //count rdm value
+  //count rdm value
  switch(q){
  case(1):
  rdm1++;  
@@ -512,13 +502,13 @@ win=(rdm1*random1)+(rdm2*random2)+(rdm3*random3)+(rdm4*random4)+(rdm5*random5)+(
     }else if(win==totalcoin){  
        winloss();
   document.getElementById('win').innerHTML=totalcoin;
-   document.getElementById('loss').innerHTML='';
-document.getElementById('win-loss').innerHTML="Drow";
+  document.getElementById('loss').innerHTML='';
+  document.getElementById('win-loss').innerHTML="Drow";
  }else if(win<totalcoin){   
    winloss();
    document.getElementById('win').innerHTML='';
    document.getElementById('loss').innerHTML=totalcoin;
-document.getElementById('win-loss').innerHTML="Your loss";
+   document.getElementById('win-loss').innerHTML="Your loss";
  }
  // level up
  if (computerpoints<=0) {
@@ -529,7 +519,7 @@ document.getElementById('win-loss').innerHTML="Your loss";
  }
  CreatProfile();
  } 
-// if level.down
+// if level down
  if (playerpoints <= 0) {
    if (level == 4) { levelup(0, '3');
    } else if (level == 3) { levelup(0, '2');
@@ -546,7 +536,7 @@ document.getElementById('win-loss').innerHTML="Your loss";
        document.getElementById(`${p}`).value=0;
  }
     },6000);
-  }else{ AlertSmg("C=heck Your coin");  }
+  }else{ AlertSmg("Check Your coin");  }
  } 
  } else {
    AlertSmg("Wait...")
@@ -589,10 +579,10 @@ document.getElementById('about-butt').onclick=function () {
 document.getElementById('settings').onclick=function () {
   if (sttng==true) {
    sttng =false;
-    document.getElementById('setting').style.display="block";
-    document.getElementById('rdmnum1').style.display="none";
-    document.getElementById('rdmnum2').style.display="none";
-    document.getElementById('about').style.display="none";
+ document.getElementById('setting').style.display="block";
+ document.getElementById('rdmnum1').style.display="none";
+ document.getElementById('rdmnum2').style.display="none";
+ document.getElementById('about').style.display="none";
   } else {
     sttng=true;
     document.getElementById('rdmnum1').style.display = "flex";
@@ -624,8 +614,8 @@ document.getElementById('card-or-number').onclick=function () {
     CardStyle.style.background='yellow';
     NumberStyle.style.background='white';
     CardNumber=true;
-       document.getElementById('img').style.display = "flex";
-       document.getElementById('num').style.display = "none";
+   document.getElementById('img').style.display = "flex";
+   document.getElementById('num').style.display = "none";
        cardornumber=1;
   }
 }
@@ -635,9 +625,8 @@ document.getElementById('restart').onclick=function () {
  if(conf==true){
   levelup(1,"1");
   CreatProfile();
+ }
 }
-}
-
 var bgmsc=1;
 document.getElementById('bg-music').onclick=function () {
   if (bgmsc==1) {
@@ -704,6 +693,7 @@ var fixedlevel=document.querySelectorAll("#fixed-level-value button");
        document.getElementById(`${plr}`).value=PlayerCoin;
     }
  }
+ 
 function OtherPlayerCoinInverse(i,j,x){
   var plr = "other-player" + x + "-coin";
   if(i>j){
@@ -713,7 +703,7 @@ function OtherPlayerCoinInverse(i,j,x){
         i=i-j;
      OtherPlayerCoinInverse(i,j,x);
     }, 200)
-    }
+  }
 }
 function OtherPlayerCoin(i,j,x){
   var plr="other-plr"+x;
@@ -723,59 +713,79 @@ function OtherPlayerCoin(i,j,x){
       document.getElementById(`${plr}`).innerHTML= '$'+i;
       OtherPlayerCoin(i,j,x);
     }, 50)
-    }
+   }
 }
 var investarr=[0,0,0,0,0,0,0,0];
 function RobotSelect() {
-    for (var i = 1; i <= 8; i++) { 
-        var plr = "other-player" + i + "-coin";
-        var x = Math.floor((Math.random() * 6) + 1);
-        var xy=document.getElementById(`${plr}`).value;
-        var pro = 'profile' + i;
+   for (var i = 1; i <= 8; i++) { 
+      var plr = "other-player" + i + "-coin";
+      var x = Math.floor((Math.random() * 6) + 1);
+      var xy=document.getElementById(`${plr}`).value;
+      var pro = 'profile' + i;
       var nn = Math.floor((Math.random() * 8) + 1);  
-       if(level=='1' && xy<500){
+      if(level=='1' && xy<500){
          xy=10000-xy;
-            document.getElementById(`${pro}`).src = profileLv1[nn - 1];
-         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).src = profileLv1[nn - 1];
+        document.getElementById(`${pro}`).style.transition = 'transform 2s';
         document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
 
-       } else if (level=='2' && xy<10000) {
+       }else if (level=='2' && xy<10000) {
          xy =100000-xy;
-         document.getElementById(`${pro}`).src = profileLv2[nn - 1];
-         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).src = profileLv2[nn - 1];
+        document.getElementById(`${pro}`).style.transition = 'transform 2s';
         document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
-
        } else if (level=='3' && xy<100000){
          xy=1000000-xy;
-         document.getElementById(`${pro}`).src = profileLv3[nn - 1];
-         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).src = profileLv3[nn - 1];
+        document.getElementById(`${pro}`).style.transition = 'transform 2s';
         document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
        } else if (level=='4' && xy<100000){
          xy=10000000-xy;
-         document.getElementById(`${pro}`).src = profileLv3[nn - 1];
-         document.getElementById(`${pro}`).style.transition = 'transform 2s';
+        document.getElementById(`${pro}`).src = profileLv3[nn - 1];
+        document.getElementById(`${pro}`).style.transition = 'transform 2s';
         document.getElementById(`${pro}`).style.transform = 'rotateY(360deg)';
        }
-        var y=0;
+      var y=0;
       y = Math.floor((Math.random() * Math.floor(xy/100)) + 1);
       
     var pl="other-plr"+x;
-     var z= document.getElementById(`${pl}`).value;
+    var z= document.getElementById(`${pl}`).value;
      if(z==null){
        z=0;
      }
-        if(xy>y*100){
-          y=(y*100)+z;
-        } else if (xy>y*10) {
-          var y=(y*10);
-        }
+      if(xy>y*100){
+        y=(y*100)+z;
+      } else if (xy>y*10) {
+        var y=(y*10);
+      }
       investarr[i-1]=y;
         OtherPlayerCoin(z,y,x);
         OtherPlayerCoinInverse(xy,y,i);
         setTimeout(function() {
-          document.getElementById(`${pl}`).innerHTML = '$' + y;
+        document.getElementById(`${pl}`).innerHTML = '$' + y;
         }, 3010)
     }
-}
+  }
+//log out
+document.getElementById('log-out').onclick=function fname(){
+  alert('coming soon more option')
+  /*
+  var cancilbuttcreat= document.createElement("button");
+  var yesbuttcreat= document.createElement("button");
+  cancilbuttcreat.textContent='Cancil';
+  cancilbuttcreat.className='CancilLogOut';
+  yesbuttcreat.textContent='Yes';
+  yesbuttcreat.className='YesLogOut';
+ 
+   document.getElementById('alert-smg').appendChild(cancilbuttcreat);
 
+ document.getElementById('alert-smg').appendChild(yesbuttcreat);
+
+ document.getElementById('alert-smg').style.display='flex';
+ sttng=true;
+    document.getElementById('rdmnum1').style.display = "flex";
+    document.getElementById('rdmnum2').style.display = "flex";
+   document.getElementById('setting').style.display="none";
+  */
+}
 
