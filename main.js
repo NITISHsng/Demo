@@ -768,7 +768,7 @@ function RobotSelect() {
   }
 //log out
 document.getElementById('log-out').onclick=function fname(){
-  alert('coming soon more option')
+ // alert('coming soon more option')
   /*
   var cancilbuttcreat= document.createElement("button");
   var yesbuttcreat= document.createElement("button");
@@ -787,5 +787,8 @@ document.getElementById('log-out').onclick=function fname(){
     document.getElementById('rdmnum2').style.display = "flex";
    document.getElementById('setting').style.display="none";
   */
+  document.getElementById("login-page").style.display='flex';
+  document.getElementById("contanar").style.display='none';
+  localStorage.clear();
 }
 
