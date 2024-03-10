@@ -255,12 +255,12 @@
            <button id="clear">CLEAR</button>
       </div>
   </div>
-<script src="main.js"></script>
+
 <script type="module">
 var  welcome=new Audio("/sound/welcome.mp3");
 var signuplogin=true;
 var level=localStorage.getItem('level');
-if(level != null){
+if(level == "2" || level =="3" || level=="4"){
   document.getElementById("login-page").style.display='none';
   document.getElementById("contanar").style.display='flex';
 }
@@ -274,7 +274,6 @@ if(level != null){
             document.getElementById('login').innerHTML='LOG-IN';
         }
     }
-
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 
@@ -290,7 +289,6 @@ if(level != null){
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const form = document.getElementById("registrationForm");
-
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const mail = document.getElementById("mail").value;
@@ -321,11 +319,11 @@ if(level != null){
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             alert("User created successfully. You can now login.");
-          
         } catch (error) {
             const errorMessage = error.message;
             alert(`Sign up failed: ${errorMessage}`);
         }
     }
 </script>
+<script src="main.js"></script>
 </body>
